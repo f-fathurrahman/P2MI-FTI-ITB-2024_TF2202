@@ -40,8 +40,12 @@ lang: id
 
 ## Tools yang akan digunakan
 
+Python, Julia, MATLAB, Fortran, *spreadsheet*
 
-## Contoh masalah
+
+
+
+## Contoh: *bungee jumper*
 
 :::: {.columns}
 
@@ -53,16 +57,72 @@ lang: id
 
 ::: {.column width="70%"}
 
-Misalkan kita diminta untuk menghitung kecepatan dari pelompat
-*bungee*. Dengan menggunakan pengetahuan fisika dan mekanika
-fluida, kita mendapatkan persamaan berikut.
-
+Misalkan kita diminta untuk menghitung kecepatan $v(t)$ dari pelompat
+*bungee* yang sedang terjun. Untuk mendapatkan ini, kita menggunakan Hukum Newton:
 $$
-\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c_d}{m}v^2
+F = m \frac{\mathrm{d}}{\mathrm{d}t} v(t)
+$$
+dengan $F$ adalah gaya total dan $m$ adalah massa pelompat.
+
+Gaya yang bekerja pada penerjun ada dua, yaitu gaya gravitasi $F_{g}$ dan gaya akibat
+gesekan udara (*drag*) $F_{r}$:
+$$
+F = F_{g} + F_{d}
+$$
+dengan: $F_{g} = mg$ ($g$ adalah percepatan gravitasi) dan gaya gesekan diudara
+diasumsikan berbanding lurus dengan kecepatan.
+$F_{d} = -c_{d} v$
+
+Sehingga dapat diperoleh:
+$$
+\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c_d}{m}v
 $$
 
 :::
 
 ::::
 
+
+## Contoh: *bungee jumper*
+
+Bagaimana cara menyelesaikan persamaan diferensial ini?
+
+$$
+\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c_d}{m}v
+$$
+
+Solusi analitik:
+$$
+v(t) = \frac{gm}{c}\left( 1 - e^{(c_d/m)t} \right)
+$$
+
+
+
+## Aproksimasi dan Metode numerik
+
+$$
+\frac{v_{i+1} - v_{i}}{t_{i} - t_{i}} = g - \frac{c_{d}}{m} (v_{i})
+$$
+
+Tulis ulang menjadi:
+$$
+v_{i+1} = v_{i} + \left( g - \frac{c_d}{m} (v_{i}) \right) \left( t_{i+1} - t_{i} \right)
+$$
+
+Metode ini dikenal dengan metode Euler.
+
+
+
+## Tugas
+
+Ulangi kasus untuk peloncat *bungee* pada contoh sebelumnya, jika sekarang
+gaya gesekan yang bekerja berbanding lurus dengan *kuadrat kecepatan*
+$$
+F_{d} = c_{d} v^2
+$$
+dengan $c_d$ adalah koefisien gesekan.
+Bandingkan solusi numerik yang Anda dapatkan dengan solusi analitik
+$$
+v(t) = \sqrt{\frac{gm}{c_d}}\tanh\left( \frac{gc_d}{m} t \right)
+$$
 
