@@ -1,0 +1,68 @@
+---
+title: "TF2202: Pendahuluan"
+author: "Fadjar Fathurrahman"
+format:
+  revealjs:
+    smaller: true
+    width: 1280
+    height: 800
+    margin: 0.1
+lang: id
+---
+
+## Sekilas mengenai kuliah ini
+
+- Kode dan nama kuliah: Komputasi Rekayasa
+
+- Nama lain: metode numerik, komputasi teknik
+
+- Dalam kuliah ini kita akan mempelajari *metode-metode numerik*
+  yang diimplementasikan dengan menggunakan komputer dengan aplikasi
+  yang sesuai dan/atau bahasa pemrograman.
+  Metode-metode numerik ini akan digunakan untuk menyelesaikan *persamaan matematis*
+  yang muncul pada pemodelan masalah yang muncul pada sains dan keteknikan.
+
+
+## Sekilas mengenai kuliah ini
+
+- Beban: 3 SKS
+
+- Referensi:
+  - S. C. Chapra and R. P. Canale. Numerical Methods for Engineers. (7th Ed)
+
+
+## Apa yang akan dipelajari
+
+- Aproksimasi dan galat
+
+- Pencarian akar
+
+
+## Tools yang akan digunakan
+
+
+## Contoh masalah
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+![Bungee jumper](images_priv/Chapra_Fig_1_1.png){width=50%}
+
+:::
+
+::: {.column width="70%"}
+
+Misalkan kita diminta untuk menghitung kecepatan dari pelompat
+*bungee*. Dengan menggunakan pengetahuan fisika dan mekanika
+fluida, kita mendapatkan persamaan berikut.
+
+$$
+\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c_d}{m}v^2
+$$
+
+:::
+
+::::
+
+
