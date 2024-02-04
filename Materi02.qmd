@@ -1,0 +1,72 @@
+---
+title: "TF2202: Pendahuluan"
+author: "Fadjar Fathurrahman"
+format:
+  revealjs:
+    smaller: false
+    width: 1500
+    height: 800
+    margin: 0.1
+lang: id
+language:
+  id:
+    crossref-eq-prefix: Persamaan
+    section-title-abstract: Abstrak
+---
+
+## Representasi bilangan titik-mengambang (*floating point*)
+
+Kuantitas numerik dengan pecahan dan yang memiliki digit di belakang koma, biasanya direpresentasikan
+pada komputer dengan menggunakan format bilangan titik-mengambang atau sering disebut sebagai
+*floating-point number*. Pada pendekatan ini, suatu bilangan dinyatakan sebagai:
+
+$$
+\pm s \times b^{e}
+$$
+
+dengan $s$ adalah significand atau mantissa, $b$ adalah basis dari sistem
+bilangan yang digunakan, dan $e$ adalah eksponen.
+
+Sebelum dinyatakan dalam bentuk ini, suatu bilangan dinormalisasi terlebih dahulu dengan cara
+memindahkan titik, desimal, biner dan sebagainya sedemikian rupa sehingga hanya satu digit
+yang berada di kiri tanda titik. Hal ini dilakukan untuk menghemat memori karena tidak ada
+bilangan nol yang tidak signifikan yang perlu disimpan.
+Misalnya bilangan 0.005678 dapat direpresentasikan tanpa normalisasi sebagai
+$0.005678 \times 10^{0}$. Namun dengan normalisasi, nilai tersebut akan disimpan
+sebagai $5.678 \times 10^{-3}$, artinya dua nol sebelum digit 5 tidak perlu disimpan.
+Ketika kita melakukan normalisasi untuk bilangan dengan basis 2, digit yang berada di kiri tanda
+titik biner akan selalu bernilai 1.
+
+Implikasi dari representasi *floating point*
+
+Misalkan kita memiliki komputer basis-10 dengan ukuran word 5 diti. Asumsikan bahwa satu digit
+akan digunakan sebagai tanda (sign), dua untuk eksponen, dan dua untuk mantissa.
+Asumsikan juga satu digit dari eksponen digunakan untuk menyimpan tanda, dan satu digit lagi
+untuk besar dari eksponen.
+
+$$
+s_1 d_1 d_2 \times 10^{s_0 d_0}
+$$
+
+$s_0, s_1$: tanda
+
+$d_0$: magnitudo dari eksponen
+
+$d_1, d_2$ adalah magnitudo dari digit mantissa.
+
+Angka terbesar yang dapat direpresentasikan adalah
+$$
+\text{angka terbesar} = +9.9 \times 10^{+9}
+$$
+
+Angka terkecil yang dapat direpresentasikan adalah
+$$
+\text{angka terkecil} = -1.0 \times 10^{-9}
+$$
+
+
+Bilangan positif dan negatif yang berada di luar jangkauan ini akan mengakibatkan
+kesalahan luapan atau *overflow error* (untuk bilangan yang lebih besar) atau
+*underflow error* (untuk bilangan yang lebih kecil).
+
+
