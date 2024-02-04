@@ -230,7 +230,7 @@ atau dengan menulis program) untuk mendapatkan solusi
 
 (5) Visualisasi solusi
 
-(5) Analisis
+(5) Analisis (termasuk validasi dan verifikasi)
 
 Pada kuliah ini kita akan lebih fokus pada Langkah (3), (4) dan (5)
 
