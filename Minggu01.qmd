@@ -3,11 +3,15 @@ title: "TF2202: Pendahuluan"
 author: "Fadjar Fathurrahman"
 format:
   revealjs:
-    smaller: true
-    width: 1280
+    smaller: false
+    width: 1500
     height: 800
     margin: 0.1
 lang: id
+language:
+  id:
+    crossref-eq-prefix: Persamaan
+    section-title-abstract: Abstrak
 ---
 
 ## Sekilas mengenai kuliah ini
@@ -45,7 +49,7 @@ Python, Julia, MATLAB, Fortran, *spreadsheet*
 
 
 
-## Contoh: *bungee jumper*
+## Contoh: *bungee jumper* {.smaller}
 
 :::: {.columns}
 
@@ -63,21 +67,17 @@ $$
 F = m \frac{\mathrm{d}}{\mathrm{d}t} v(t)
 $$
 dengan $F$ adalah gaya total dan $m$ adalah massa pelompat.
-
 Gaya yang bekerja pada penerjun ada dua, yaitu gaya gravitasi $F_{g}$ dan gaya akibat
 gesekan udara (*drag*) $F_{r}$:
 $$
 F = F_{g} + F_{d}
 $$
 dengan: $F_{g} = mg$ ($g$ adalah percepatan gravitasi) dan gaya gesekan diudara
-diasumsikan berbanding lurus dengan kecepatan.
-$F_{d} = -c_{d} v$
-
-Sehingga dapat diperoleh:
+diasumsikan berbanding lurus dengan kecepatan:
 $$
-\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c_d}{m}v
+F_{d} = -c v
 $$
-
+dengan $c$ adalah suatu konstanta.
 :::
 
 ::::
@@ -85,31 +85,155 @@ $$
 
 ## Contoh: *bungee jumper*
 
+Sehingga dapat diperoleh persamaan gerak untuk *bungee jumper*:
+$$
+\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c}{m}v
+$$ {#eq-diff-eq-01}
+
 Bagaimana cara menyelesaikan persamaan diferensial ini?
-
+Kita dapat menggunakan kalkulus untuk mencari solusi analitiknya. Dengan
+menggunakan informasi tambahan (syarat awal) bahwa $v(t=0)=0$, dapat diperoleh
+solusi analitik:
 $$
-\frac{\mathrm{d}v}{\mathrm{d}t} = g - \frac{c_d}{m}v
-$$
-
-Solusi analitik:
-$$
-v(t) = \frac{gm}{c}\left( 1 - e^{(c_d/m)t} \right)
-$$
-
+v(t) = \frac{gm}{c}\left( 1 - e^{(c/m)t} \right)
+$$ {#eq-sol-diff-eq-01}
+Untuk verifikasi bahwa persamaan ini memenuhi persamaan diferensial (@eq-diff-eq-01)
+substitusi (@eq-sol-diff-eq-01)
 
 
-## Aproksimasi dan Metode numerik
+## Solusi analitik
+
+Dengan menggunakan nilai-nilai berikut: $m = 68.1$ kg,
+$g = 9.81$ $\mathrm{m}/\mathrm{s}^2$, $c = 12.5$ kg/s (semua dalam satuan SI)
+kita dapat menghitung kecepatan sebagai fungsi dari waktu $t$.
+
+
+![](chapra_7th/Chapra_Example_1_1_table.png){width=100%}
+
+
+TUGAS: Tulis program Python untuk membuat plot dari $v(t)$ terhadap $t$.
+
+
+
+## Solusi numerik
+
+Solusi yang baru saja kita dapatkan adalah solusi eksak atau solusi analitik.
+
+Bagaimana jika:
+
+- kita lupa cara mengintegralkan atau menyelesaikan persamaan diferensial yang diperoleh?
+- persamaan diferensial yang diperoleh rumit sehingga tidak ada solusi analitik
+  yang tersedia
+
+Alternatif yang dapat kita gunakan adalah dengan menggunakan *metode numerik*.
+
+
+## Aproksimasi dan Metode numerik {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![Beda hingga](images_priv/Chapra_Fig_1_3.png){width=100%}
+
+:::
+
+::: {.column width="50%"}
+
+
+Dengan menggunakan metode numerik, kita dapat mengaproksimasi
+turunan dengan menggunakan:
+$$
+\frac{\mathrm{d}v}{\mathrm{d}t} \approx \frac{v_{i+1} - v_{i}}{t_{i+1} - t_{i}}
+$$
+
+Perhatikan bahwa kita telah *mendiskritisasi* kecepatan $v(t)$ dan waktu
+$t$ pada persamaan di atas, artinya $v$ dan $t$ tidak lagi memiliki nilai
+yang kontinu, namun diskrit, seperti pada nilai dalam tabel.
+Solusi numerik yang akan kita dapatkan hanya tersedia pada titik-titik
+diskrit tersebut.
+
+:::
+
+::::
+
+
+## Solusi numerik {.smaller}
+
+Persamaan diferensial (@eq-diff-eq-01) dapat diaproksimasi menjadi:
+$$
+\frac{v_{i+1} - v_{i}}{t_{i+1} - t_{i}} = g - \frac{c}{m} v_{i}
+$$
 
 $$
-\frac{v_{i+1} - v_{i}}{t_{i} - t_{i}} = g - \frac{c_{d}}{m} (v_{i})
+v_{i+1} = v_{i} + \underbrace{\left( g -
+\frac{c}{m} v_{i} \right)}_{\left.\dfrac{\mathrm{d}v}{\mathrm{d}x}\right|_{t_{i},v_{i}}}
+\underbrace{\left( t_{i+1} - t_{i} \right)}_{\Delta t}
 $$
 
-Tulis ulang menjadi:
+Metode ini juga dapat dinyatakan dengan deskripsi berikut:
 $$
-v_{i+1} = v_{i} + \left( g - \frac{c_d}{m} (v_{i}) \right) \left( t_{i+1} - t_{i} \right)
+\text{nilai baru} = \text{nilai lama} + \text{kemiringan}\times\text{ukuran langkah}
 $$
 
-Metode ini dikenal dengan metode Euler.
+Metode ini dikenal dengan *metode Euler*. Kita akan mempelajari lebih lanjut mengenai
+metode ini pada bab mengenai persamaan diferensial (persoalan nilai awal).
+
+
+## Solusi numerik {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Dengan menggunakan ukuran langkah $\Delta t = 2$ s, $t_0 = 0$, $v_0 = 0$
+kita dapat menghitung:
+$$
+v_1 = 0 + \left[ 9.81 - \frac{12.5}{68.1}(0) \right] 2 = 19.62
+$$
+
+$$
+v_2 = 19.62 + \left[ 9.81 - \frac{12.5}{68.1}(19.62) \right] 2 = 32.04
+$$
+
+:::
+
+::: {.column width="50%"}
+
+Dengan meneruskan perhitungan ini dapat diperoleh tabel berikut.
+
+![](chapra_7th/Chapra_Example_1_2_table.png){height=50%}
+
+:::
+
+::::
+
+
+## Solusi analitik vs solusi numerik
+
+
+![Perbandingan](chapra_7th/Chapra_Fig_1_5.png){height=25%}
+
+
+
+## Langkah-langkah penyelesaian masalah
+
+(1) Identifikasi permasalahan
+
+(2) Pemodelan: hukum fisika, asumsi dan aproksimasi fisis
+penurunan persamaan matematika
+
+(3) Aproksimasi numerik, penurunan persamaan diskrit
+
+(4) Implementasi pada komputer (menggunakan perangkat lunak khusus
+atau dengan menulis program) untuk mendapatkan solusi
+
+(5) Visualisasi solusi
+
+(5) Analisis
+
+Pada kuliah ini kita akan lebih fokus pada Langkah (3), (4) dan (5)
+
 
 
 
@@ -118,11 +242,11 @@ Metode ini dikenal dengan metode Euler.
 Ulangi kasus untuk peloncat *bungee* pada contoh sebelumnya, jika sekarang
 gaya gesekan yang bekerja berbanding lurus dengan *kuadrat kecepatan*
 $$
-F_{d} = c_{d} v^2
+F_{d} = c v^2
 $$
 dengan $c_d$ adalah koefisien gesekan.
 Bandingkan solusi numerik yang Anda dapatkan dengan solusi analitik
 $$
-v(t) = \sqrt{\frac{gm}{c_d}}\tanh\left( \frac{gc_d}{m} t \right)
+v(t) = \sqrt{\frac{g m}{c}}\tanh\left( \frac{g c}{m} t \right)
 $$
 
