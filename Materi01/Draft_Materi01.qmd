@@ -1,12 +1,7 @@
 ---
 title: "TF2202: Pendahuluan"
 author: "Fadjar Fathurrahman"
-format:
-  revealjs:
-    smaller: false
-    width: 1500
-    height: 800
-    margin: 0.1
+format: beamer
 lang: id
 language:
   id:
