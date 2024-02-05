@@ -62,9 +62,9 @@ pada komputer dengan menggunakan format bilangan titik-mengambang atau sering di
 $$
 \pm s \times b^{e}
 $$
-
-dengan $s$ adalah significand atau mantissa, $b$ adalah basis dari sistem
-bilangan yang digunakan, dan $e$ adalah eksponen.
+dengan $s$ adalah \textit{significand} atau \textit{mantissa},
+$b$ adalah basis dari sistem bilangan yang digunakan,
+dan $e$ adalah eksponen.
 
 Sebelum dinyatakan dalam bentuk ini, suatu bilangan dinormalisasi terlebih dahulu dengan cara
 memindahkan titik, desimal, biner dan sebagainya sedemikian rupa sehingga hanya satu digit
