@@ -1,18 +1,57 @@
 ---
-title: "TF2202: Pendahuluan"
+title: "TF2202: Draft"
 author: "Fadjar Fathurrahman"
-format:
-  revealjs:
-    smaller: false
-    width: 1500
-    height: 800
-    margin: 0.1
+format: html
 lang: id
 language:
   id:
     crossref-eq-prefix: Persamaan
     section-title-abstract: Abstrak
 ---
+
+Galat pembulatan berhubungan langsung dengan bagaimana cara suatu bilangan
+disimpan pada komputer.
+
+Sistem bilangan: suatu konvensi untuk merepresentasikan
+kuantitas numerik. Contoh: sistem desimal atau basis-10: ada 10 digit
+yang digunakan.
+
+Contoh:
+$$
+86409 = (8 \times 10^4) + (6 \times 10^3) + (4 \times 10^2) + (0 \times 10^1) +
+(9\times 10^0)
+$$
+
+Notasi posisi, nilai tempat.
+
+Komputer menggunakan basis-2 untuk merepresentasikan bilangan atau sistem biner.
+
+
+Representasi bilangan bulat.
+
+Metode magnitudo bertanda (*signed magnitude method*) digunakan pada komputer
+untuk merepresentasikan suatu bilangan. Bit pertama digunakan untuk menyatakan tanda
+(0 untuk bilangan positif dan 1 untuk bilangan negatif).
+Bit yang lain digunakan untuk menyimpan magnitudo bilangan.
+Misalnya bilangan -173 pada komputer dengan 16-bit
+
+Tentukan bilangan bulat dalam basis-10 yang dapat direpresentasikan dalam
+16-bit.
+
+Dari 16 bit yang tersedia, bit pertama digunakan menyimpan tanda.
+15 bit yang tersisa dapat digunakan untuk menyimpan bilangan biner
+dari 0 sampai 111111111111111 yang sama dengan
+$$
+(1 \times 2^{14}) + (1 \times 2^{13}) + \cdots + (1 \times 2^{1}) +
+(1 \times 2^{0}) = 32676
+$$
+
+Oleh karena itu 16 bit dapat digunakan untuk merepresentasikan bilangan bulat
+dari -32767 sampai 32767
+Bilangan 0 sudah didefinisikan sebagai 0000000000000000, maka
+1000000000000000 tidak perlu digunakan untuk menyatakan minus 0. Oleh karena itu
+biasanya representasi biner tersebut digunakan untuk mereprentasikan bilangan
+negatif tambahan, yaitu -32768.
 
 ## Representasi bilangan titik-mengambang (*floating point*)
 
