@@ -1,16 +1,19 @@
 \input{PREAMBLE01}
 
-\title{TF2202: Pendahuluan}
+\title{TF2202 Komputasi Rekayasa\\
+Pendahuluan}
 \author{Fadjar Fathurrahman}
-\date{}
+\date{2024}
 
 \begin{document}
 
 \frame{\titlepage}
 \ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners, boxrule=0pt, frame hidden, breakable]}{\end{tcolorbox}}\fi
 
+
+
 \begin{frame}{Sekilas mengenai kuliah ini}
-\protect\hypertarget{sekilas-mengenai-kuliah-ini}{}
+
 \begin{itemize}
 \item
   Kode dan nama kuliah: Komputasi Rekayasa
@@ -25,43 +28,54 @@
 \end{itemize}
 \end{frame}
 
+
+
+
 \begin{frame}{Sekilas mengenai kuliah ini}
-\protect\hypertarget{sekilas-mengenai-kuliah-ini-1}{}
-\begin{itemize}
-\item
-  Beban: 3 SKS
-\item
-  Referensi:
 
-  \begin{itemize}
-  \tightlist
-  \item
-    S. C. Chapra and R. P. Canale. Numerical Methods for Engineers. (7th
-    Ed)
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Apa yang akan dipelajari}
-\protect\hypertarget{apa-yang-akan-dipelajari}{}
 \begin{itemize}
-\item
-  Aproksimasi dan galat
-\item
-  Pencarian akar
+\item Beban: 3 SKS
+\item Referensi utama: Chapra and Canale. Numerical Methods for Engineers. (7th Ed.)
+\item Praktikum (berkelompok, jadwal akan ditentukan dengan asisten)
+\item Kuliah ini sangat menekankan pada metode dan penguasaan \textit{tools}
+berbasis komputer: dapat berupa aplikasi maupun bahasa pemrograman.
+Ada beberapa tools yang dapat kita gunakan: Python, Julia, MATLAB, Fortran, dan
+\emph{spreadsheet}
+\item Disarankan menyediakan komputer atau laptop pada saat kuliah
 \end{itemize}
+
 \end{frame}
 
 
+\begin{frame}{Pemrograman}
 
-
-\begin{frame}{Tools yang akan digunakan}
-
-Ada beberapa tools yang dapat kita gunakan:
 \begin{itemize}
-\item Python, Julia, MATLAB, Fortran, \emph{spreadsheet}
+\item Python adalah bahasa pemrograman utama yang akan kita gunakan
+\item Dapat menggunakan Jupyter Notebook, Google Colab juga dapat digunakan
+\item \textit{But I cannot do (or hate) programming}:
+Anda dapat menggunakan \textit{Google search} dan \textit{ChatGPT}
 \end{itemize}
 
+\end{frame}
+
+
+
+\begin{frame}{Langkah-langkah penyelesaian masalah}
+
+Kuliah ini sangat berhubungan erat dengan pemodelan fisis.
+
+\begin{enumerate}[(1)]
+\item Identifikasi permasalahan
+\item Pemodelan: hukum fisika, asumsi dan aproksimasi fisis penurunan
+  persamaan matematika
+\item Aproksimasi numerik, penurunan persamaan diskrit
+\item Implementasi pada komputer (menggunakan perangkat lunak khusus atau
+  dengan menulis program) untuk mendapatkan solusi
+\item Visualisasi solusi
+\item Analisis (termasuk validasi dan verifikasi)
+\end{enumerate}
+
+Pada kuliah ini kita akan lebih fokus pada Langkah (3), (4) dan (5)
 \end{frame}
 
 
@@ -119,7 +133,7 @@ menggunakan kalkulus untuk mencari solusi analitiknya. Dengan
 menggunakan informasi tambahan (syarat awal) bahwa $v(t=0)=0$, dapat
 diperoleh solusi analitik:
 \begin{equation}
-v(t) = \frac{gm}{c}\left( 1 - e^{(c/m)t} \right)
+v(t) = \frac{gm}{c}\left( 1 - e^{-(c/m)t} \right)
 \label{eq:sol-diff-eq-01}
 \end{equation}
 Untuk verifikasi bahwa
@@ -228,16 +242,26 @@ lebih lanjut mengenai metode ini pada bab mengenai persamaan diferensial
 
 \begin{frame}{Solusi numerik}
 
+\fontsize{9pt}{10pt}\selectfont
+
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-Dengan menggunakan ukuran langkah \(\Delta t = 2\) s, \(t_0 = 0\),
-\(v_0 = 0\) kita dapat menghitung: \[
-v_1 = 0 + \left[ 9.81 - \frac{12.5}{68.1}(0) \right] 2 = 19.62
-\]
-
-\[
+Dengan menggunakan ukuran langkah $\Delta t = 2$ s, $t_0 = 0$,
+\(v_0 = 0\) kita dapat menghitung:
+\begin{eqnarray*}
+v_1 = 0 + \left[ 9.81 - \frac{12.5}{68.1}(0) \right] 2 = 19.62 \\
 v_2 = 19.62 + \left[ 9.81 - \frac{12.5}{68.1}(19.62) \right] 2 = 32.04
-\]
+\end{eqnarray*}
+
+Lanjutkan ...
+
+Tipe perhitungan \emph{berulang} (dan membosankan)
+ini akan sering kita temui pada kuliah ini.
+
+Perhitungan berulang ini adalah salah satu alasan kita
+menggunakan komputer.
+
+
 \end{column}
 
 \begin{column}{0.5\textwidth}
@@ -245,8 +269,11 @@ v_2 = 19.62 + \left[ 9.81 - \frac{12.5}{68.1}(19.62) \right] 2 = 32.04
 Dengan meneruskan perhitungan ini dapat diperoleh tabel berikut.
 
 {\centering
-\includegraphics[width=\textwidth,height=0.5\textheight]{../chapra_7th/Chapra_Example_1_2_table.png}
+\includegraphics[height=0.4\textheight]{../chapra_7th/Chapra_Example_1_2_table.png}
 \par}
+
+Pertanyaan: bagaimana jika kita ingin mengetahui nilai $v$ pada waktu yang
+tidak tertulis pada tabel, misalnya $t=3$?
 
 \end{column}
 
@@ -258,50 +285,122 @@ Dengan meneruskan perhitungan ini dapat diperoleh tabel berikut.
 
 \begin{frame}{Solusi analitik vs solusi numerik}
 
+\begin{columns}[T]
+
+\begin{column}{0.5\textwidth}
 {\centering
 \includegraphics[height=0.8\textheight]{../chapra_7th/Chapra_Fig_1_5.png}
 \par}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+Solusi numerik tidak sama persis dengan solusi analitik namun memiliki
+karakteristik yang mirip.
+\end{column}
+
+\end{columns}
 
 \end{frame}
 
 
 
-\begin{frame}{Langkah-langkah penyelesaian masalah}
+\begin{frame}{Apa yang akan dipelajari}
 
-\begin{enumerate}
-[(1)]
-\item
-  Identifikasi permasalahan
-\item
-  Pemodelan: hukum fisika, asumsi dan aproksimasi fisis penurunan
-  persamaan matematika
-\item
-  Aproksimasi numerik, penurunan persamaan diskrit
-\item
-  Implementasi pada komputer (menggunakan perangkat lunak khusus atau
-  dengan menulis program) untuk mendapatkan solusi
-\item
-  Visualisasi solusi
-\item
-  Analisis (termasuk validasi dan verifikasi)
-\end{enumerate}
+\begin{itemize}
+\item Aproksimasi, galat pemotongan dan pembulatan
+\item Pencarian akar persamaan nonlinear
+\item Solusi sistem persamaan linear
+\item Interpolasi dan regresi (pencocokan kurva)
+\item Optimisasi
+\item Integrasi dan diferensiasi numerik
+\item Solusi numerik dari persamaan diferensial biasa (masalah nilai
+awal dan masalah nilai batas)
+\item Solusi numerik dari persamaan diferensial parsial
+\end{itemize}
 
-Pada kuliah ini kita akan lebih fokus pada Langkah (3), (4) dan (5)
 \end{frame}
 
 
 
+\begin{frame}{Penggunaan pustaka atau menulis solusi sendiri}
 
-\begin{frame}{Tugas}
+Use prepackaged library or roll out your own solution?
+
+Pada kelas ini kita akan menggunakan kedua pendekatan tersebut.
+
+Untuk metode yang relatif sederhana biasanya Anda akan diminta
+untuk mengimplementasikan sendiri program
+
+Beberapa metode numerik cukup rumit sehingga tidak praktis atau
+tidak mudah untuk diprogram.
+Beberapa operasi umum
+seperti perkalian matriks, meskipun tampak sederhana, memerlukan
+keahlian khusus agar program yang dihasilkan memiliki performa
+yang optimal. Untuk kasus-kasus tersebut, kita akan menggunakan
+\textit{prepackaged library} atau \textit{built-in solution} yang
+tersedia pada bahasa pemrograman yang digunakan.
+
+\end{frame}
+
+
+
+\begin{frame}{Beberapa pustaka Python yang akan digunakan}
+
+\begin{itemize}
+\item Numpy
+\item Matplotlib
+\item SciPy
+\item SymPy
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+
+Beberapa metode numerik memiliki dasar atau penurunan yang sederhana,
+namun banyak metode numerik yang tidak memiliki penurunan yang pasti.
+  
+Sebagian besar pengguna dapat menganggap metode
+numerik sebagai suatu resep atau \textit{black box} yang tinggal
+diaplikasikan.
+  
+Intuisi dan pengalaman juga berpengaruh pada kesuksesan pada implementasi
+dan penerapan metode numerik
+
+Hasil dari suatu metode numerik harus selalu diuji: variasi parameter
+pada algoritma, perbandingan dengan
+metode numerik lain, solusi analitik, prinsip fisis, eksperimen dan data, atau
+dengan cara lain.
+  
+\end{frame}
+
+
+
+\begin{frame}{Latihan}
+
+\fontsize{9pt}{10pt}\selectfont
 
 Ulangi kasus untuk peloncat \emph{bungee} pada contoh sebelumnya, jika
 sekarang gaya gesekan yang bekerja berbanding lurus dengan \emph{kuadrat
-kecepatan} \[
+kecepatan}
+\begin{equation*}
 F_{d} = c v^2
-\] dengan \(c_d\) adalah koefisien gesekan. Bandingkan solusi numerik
-yang Anda dapatkan dengan solusi analitik \[
-v(t) = \sqrt{\frac{g m}{c}}\tanh\left( \frac{g c}{m} t \right)
-\]
+\end{equation*}
+dengan $c$ adalah konstanta atau koefisien gesekan.
+Gunakan $c=2.5$ (apakah satuan dari $c$?) dan nilai-nilai yang sama dengan
+contoh untuk nilai-nilai yang lain.
+
+Bandingkan solusi numerik
+yang Anda dapatkan dengan solusi analitik:
+\begin{equation*}
+v(t) = \sqrt{\frac{g m}{c}}\tanh\left( \sqrt{\frac{g c}{m}} t \right)
+\end{equation*}
+dengan $\tanh(x)$ adalah fungsi tangen hiperbolik:
+\begin{equation*}
+\tanh(x) = \frac{e^x - e^{-x}}{e^{x} + e^{-x}}
+\end{equation*}
+
 \end{frame}
 
 
