@@ -8,9 +8,125 @@ Aproksimasi, Kesalahan Pemotongan dan Pembulatan}
 \begin{document}
 
 \frame{\titlepage}
-\ifdefined\Shaded\renewenvironment{Shaded}{
-  \begin{tcolorbox}[enhanced, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners, boxrule=0pt, frame hidden, breakable]}
-    {\end{tcolorbox}}\fi
+
+\begin{frame}{Kesalahan numerik (\textit{numerical errors})}
+
+kesalahan (galat) pemotongan (truncation error)
+
+kesalahan (galat) pembulatan (round-off error)
+
+\begin{equation*}
+\text{nilai benar} = \text{aproksimasi} + \text{galat}
+\end{equation*}
+
+\begin{equation*}
+E_{t} = \text{nilai benar} - \text{aproksimasi}
+\end{equation*}
+$E_t$: galat sebenarnya
+
+\end{frame}
+
+
+\begin{frame}{Galat relatif sebenarnya}
+
+Definisi galat sebenarnya tidak memperhitungkan orde atau besar
+dari nilai yang sedang dibahas: manakah yang memiliki galat lebih
+besar?:
+\begin{itemize}\tightlist
+\item galat 1 cm dari pengukuran panjang meja
+\item galat 1 cm dari pengukuran panjang jembatan atau jalan raya
+\end{itemize}
+
+Alternatif yang dapat digunakan
+adalah menggunakan \textit{galat relatif}:
+\begin{equation*}
+\text{galat relatif sebenarnya} = \frac{\text{galat sebenarnya}}{\text{nilai benar}}
+\end{equation*}
+atau dinyatakan dalam persentase
+\begin{equation*}
+\epsilon_{t} = \frac{\text{galat sebenarnya}}{\text{nilai benar}} \times 100\%
+\end{equation*}
+
+\end{frame}
+
+
+
+\begin{frame}{Galat aproksimasi}
+
+Pada kondisi riil, nilai sebenarnya biasanya tidak diketahui \textit{a priori}.
+Dalam kondisi ini, kita dapat menggunakan galat aproksimasi:
+\begin{equation*}
+\epsilon_{a} = \frac{\text{galat aproksimasi}}{\text{aproksimasi}}
+\end{equation*}
+
+Dalam aplikasinya juga dapat digunakan definisi lain dari galat aproksimasi.
+Misalnya pada kasus pendekatan \textit{iteratif} di mana aproksimasi dilakukan
+berulang, nilai aproksimasi dihitung berdasarkan nilai aproksimasi sebelumnya.
+Pada kasus ini kita dapat menggunakan:
+\begin{equation*}
+\epsilon_{a} = \frac{\text{aproksimasi sekarang} - \text{aproksimasi sebelumnya}}%
+{\text{aproksimasi sekarang}} \times 100\%
+\end{equation*}
+Proses iteratif biasanya diulangi sampai nilai $\epsilon_{a}$ mencapai atau
+lebih kecil dari nilai tertentu, misalnya $\epsilon_{s}$:
+\begin{equation*}
+\left| \epsilon_{a} \right| < \epsilon_{s}
+\end{equation*}
+
+
+\end{frame}
+
+
+\begin{frame}{Kriteria Scarborough}
+
+Scarborough mengusulkan suatu kriteria berikut:
+\begin{equation*}
+\epsilon_{s} = (0.5 \times 10^{2-n})\%
+\end{equation*}
+yang mana jika kriteria ini terpenuhi maka hasil numerik yang kita peroleh
+benar sedikitnya dalam $n$ angka penting (\textit{significant figures}).
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]{Contoh: deret Maclaurin}
+\fontsize{9}{10}\selectfont
+
+Tinjau deret Maclaurin berikut:
+\begin{equation*}
+e^{x} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{n}}{n!}
+\end{equation*}
+Misalnya kita ingin menentukan nilai dari $e^{0.5}$ menggunakan deret Maclaurin ini.
+Kita ingin agar hasil aproksimasi yang kita peroleh benar setidaknya 3 angka penting.
+Menggunakan kriteria Scarborough kita dapat menghitung $\epsilon_s$ yang
+diperlukan (dengan $n=3$):
+\begin{equation*}
+\epsilon_{s} = (0.5 \times 10^{2-3})\% = 0.05\% = 0.0005
+\end{equation*}
+
+Pertama, kita dapat menggunakan hanya dua suku:
+$$
+e^{x} = 1 + x
+$$
+dengan $x = 0.5$ diperoleh:
+$$
+e^{0.5} = 1 + 0.5 = 1.5
+$$
+Karena $e^{0.5}$ dapat dihitung dengan menggunakan pustaka atau fungsi \pyinline{exp}
+pada Python, kita dapat menghitung galat sebenarnya dengan menganggap bahwa keluaran
+dari fungsi \pyinline{exp} adalah nilai sebenarnya:
+$$
+\epsilon_{t} = \frac{1.648721 - 1.5}{1.648721} \times 100\% = 9.02\%
+$$
+\end{frame}
+
+
+\begin{frame}[fragile]{Contoh: deret Maclaurin}
+\fontsize{9}{10}\selectfont
+
+\end{frame}
+
 
 
 \begin{frame}{Kesalahan Pemotongan (\textit{Round-off Error})}
