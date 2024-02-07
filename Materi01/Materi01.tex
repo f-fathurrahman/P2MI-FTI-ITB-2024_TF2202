@@ -8,19 +8,13 @@ Pendahuluan}
 \begin{document}
 
 \frame{\titlepage}
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners, boxrule=0pt, frame hidden, breakable]}{\end{tcolorbox}}\fi
-
-
 
 \begin{frame}{Sekilas mengenai kuliah ini}
 
 \begin{itemize}
-\item
-  Kode dan nama kuliah: Komputasi Rekayasa
-\item
-  Nama lain: metode numerik, komputasi teknik
-\item
-  Dalam kuliah ini kita akan mempelajari \emph{metode-metode numerik}
+\item Kode dan nama kuliah: Komputasi Rekayasa
+\item Nama lain: metode numerik, komputasi teknik
+\item Dalam kuliah ini kita akan mempelajari \emph{metode-metode numerik}
   yang diimplementasikan dengan menggunakan komputer dengan aplikasi
   yang sesuai dan/atau bahasa pemrograman. Metode-metode numerik ini
   akan digunakan untuk menyelesaikan \emph{persamaan matematis} yang
@@ -41,10 +35,53 @@ Pendahuluan}
 berbasis komputer: dapat berupa aplikasi maupun bahasa pemrograman.
 Ada beberapa tools yang dapat kita gunakan: Python, Julia, MATLAB, Fortran, dan
 \emph{spreadsheet}
-\item Disarankan menyediakan komputer atau laptop pada saat kuliah
+\item Disarankan menyiapkan laptop pada saat kuliah (opsional)
 \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}{Mengapa mempelajari metode numerik?}
+
+Metode numerik diperlukan pada saat solusi analitik tidak ada
+atau sulit untuk diperoleh.
+
+Metode numerik banyak dipakai di berbagai bidang: sains (fisika, kimia, biologi),
+keteknikan, ekonomi, dan bahkan sains sosial. Metode numerik dipakai
+hampir di seluruh bidang yang memerlukan analisis kuantitatif.
+
+Dalam karir yang Anda tekuni nanti, mungkin Anda perlu menggunakan program
+komputer khusus yang melibatkan perhitungan numerik. Penggunaan yang efektif
+dari program tersebut biasanya memerlukan pengetahuan dan pengalaman
+yang terkait metode numerik, selain dari pengetahuan mengenai bidang atau masalah
+khusus yang sedang ditekuni.
+
+\end{frame}
+
+
+\begin{frame}{Mengapa mempelajari metode numerik}
+
+Ada banyak permasalahan yang belum dapan diselesaikan dengan menggunakan
+program komputer yang sudah ada. Pada kondisi ini, kita perlu membuat program
+kita sendiri (\textit{customized program}).
+Pengalaman dalam mengimplementasikan suatu metode numerik
+atau algoritma akan sangat membantu.
+
+Implementasi metode numerik merupakan salah satu cara yang efektif untuk
+belajar menggunakan komputer atau pemrograman.
+
+
+\end{frame}
+
+% Jacob VanWagoner
+% https://www.quora.com/What-do-theoretical-and-experimental-physicists-think-of-each-other
+% My answer comes as a joke told to me by my co-worker, who is a physicist.
+% A theoretical physicist goes to a conference and presents a paper.
+%    Everyone thinks he is full of crap... except himself.
+% An experimental physicist goes to a conference and presents a paper.
+%    Everyone thinks he is right... except himself.
+% A computational physicist goes to a conference and presents a paper.
+%    Everyone thinks he is full of crap... including himself.
 
 
 \begin{frame}{Pemrograman}
@@ -229,7 +266,7 @@ diaproksimasi menjadi:
 
 \begin{equation*}
 v_{i+1} = v_{i} + \underbrace{\left( g - \frac{c}{m} v_{i} \right)}_{
-  \left.\dfrac{\mathrm{d}v}{\mathrm{d}x}\right|_{t_{i},v_{i}}
+  \left.\dfrac{\mathrm{d}v}{\mathrm{d}t}\right|_{t_{i},v_{i}}
 }
 \underbrace{\left( t_{i+1} - t_{i} \right)}_{\Delta t}
 \end{equation*}
