@@ -8,6 +8,7 @@ LOG_*
 *.html
 
 chapra_7th
+chapra_python
 images_priv
 
 .ipynb_checkpoints
