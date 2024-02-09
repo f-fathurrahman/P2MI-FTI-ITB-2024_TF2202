@@ -11,14 +11,20 @@ Aproksimasi, Kesalahan Pemotongan dan Pembulatan}
 
 \begin{frame}{Kesalahan numerik (\textit{numerical errors})}
 
-kesalahan (galat) pemotongan (truncation error)
+Penggunaan metode numerik tidak luput dari \emph{kesalahan} atau
+\emph{galat} (\emph{error}).
 
-kesalahan (galat) pembulatan (round-off error)
+Dalam metode numerik, kita biasanya fokus pada dua jenis kesalahan:
+\begin{itemize}\tightlist
+\item kesalahan (galat) pemotongan (truncation error)
+\item kesalahan (galat) pembulatan (round-off error)
+\end{itemize}
 
+Definisi:
 \begin{equation*}
 \text{nilai benar} = \text{aproksimasi} + \text{galat}
 \end{equation*}
-
+atau:
 \begin{equation*}
 E_{t} = \text{nilai benar} - \text{aproksimasi}
 \end{equation*}
@@ -30,15 +36,17 @@ $E_t$: galat sebenarnya
 \begin{frame}{Galat relatif sebenarnya}
 
 Definisi galat sebenarnya tidak memperhitungkan orde atau besar
-dari nilai yang sedang dibahas: manakah yang memiliki galat lebih
-besar?:
+dari nilai yang sedang dibahas. Misalnya: manakah yang memiliki galat lebih
+besar dari hasil berikut?
 \begin{itemize}\tightlist
 \item galat 1 cm dari pengukuran panjang meja
 \item galat 1 cm dari pengukuran panjang jembatan atau jalan raya
 \end{itemize}
+Tentu saja dua galat tersebut berbeda, meskipun sama-sama bernilai
+1 cm.
 
 Alternatif yang dapat digunakan
-adalah menggunakan \textit{galat relatif}:
+adalah dengan \textit{galat relatif}:
 \begin{equation*}
 \text{galat relatif sebenarnya} = \frac{\text{galat sebenarnya}}{\text{nilai benar}}
 \end{equation*}
@@ -125,18 +133,48 @@ $$
 \begin{frame}[fragile]{Contoh: deret Maclaurin}
 \fontsize{9}{10}\selectfont
 
+Kita juga dapat menghitung galat aproksimasi:
+$$
+\epsilon_{a} = \frac{1.5 - 1}{1.5} \times 100\% = 33.3 \% 
+$$
+
+Nilai $\epsilon_a$ yang diperoleh masih lebih besar dari $\epsilon_s$. Kita
+perlu menggunakan lebih banyak suku. Proses ini diberikan pada tabel berikut.
+
+{\centering
+\includegraphics[height=0.4\textheight]{../chapra_7th/Chapra_Table_Example_3_2.png}
+\par}
+
+Dari tabel tersebut diketahui bahwa setelah menggunakan enam suku, galat aproksimasi
+menjadi lebih kecil daripada 0.05 \%.
+
+
 \end{frame}
 
 
 
-\begin{frame}{Kesalahan Pemotongan (\textit{Round-off Error})}
+\begin{frame}{Galat Pemotongan (\textit{Round-off Error})}
+
+Galat pemotongan disebabkan karena komputer hanya dapat menyimpan bilangan penting
+yang terbatas selamat perhitungan.
+
+Bilangan-bilangan seperti $\pi$, $e$, dan $\sqrt{7}$ tidak dapat dinyatakan
+dalam bilangan penting yang berhingga.
+Bilangan-bilangan seperti $1/3 = 0.333333\ldots$ juga harus disimpan dalam digit
+yang berhingga (kecuali jika disimpan dalam bentuk tipe data khusus yang dapat merepresentasikan
+\emph{bilangan rasional}).
 
 Galat pembulatan berhubungan langsung dengan bagaimana cara suatu bilangan
-disimpan pada komputer.
+disimpan pada komputer. Untuk membahas ini, kita perlu mengingat kembali
+mengani \emph{sistem bilangan}
 
-Sistem bilangan: suatu konvensi untuk merepresentasikan
-kuantitas numerik.
-Untuk manusia, yang paling natural digunakan adalah sistem desimal atau
+\end{frame}
+
+
+\begin{frame}{Sistem bilangan}
+
+Sistem bilangan adalah suatu konvensi untuk merepresentasikan bilangan.
+Untuk manusia, yang paling natural digunakan adalah \emph{sistem desimal} atau
 basis-10. Pada sistem ini ada 10 digit: 0-9. Setiap digit memiliki nilai tempat.
 Contoh:
 $$
@@ -145,7 +183,7 @@ $$
 $$
 
 Komputer menggunakan basis-2 untuk merepresentasikan bilangan atau sistem biner.
-Pada sistem ini hanya ada dua digit: 0 dan 1.
+Pada sistem ini hanya ada dua digit, yaitu 0 dan 1.
 Contohnya bilangan biner $101.1_{2}$ sama dengan:
 \begin{equation*}
 1 \times 2^2 + 0 \times 2^1 + 1 \times 2^0 + 1 \times 2^{-1} = 4 + 0 + 1 + 0.5 = 5.5_{10}
@@ -323,21 +361,32 @@ type(a), type(b) # sekarang apakah tipe dari b?
 
 \begin{frame}{Representasi bilangan titik-mengambang (\textit{floating point})}
 
-Kuantitas numerik dengan pecahan dan yang memiliki digit di belakang koma, biasanya direpresentasikan
+Kuantitas numerik dengan pecahan dan yang memiliki digit di belakang koma,
+biasanya direpresentasikan
 pada komputer dengan menggunakan format bilangan titik-mengambang atau sering disebut sebagai
 \textit{floating-point number}. Pada pendekatan ini, suatu bilangan dinyatakan sebagai:
 \begin{equation*}
 \pm s \times b^{e}
 \end{equation*}
-dengan $s$ adalah significand atau mantissa, $b$ adalah basis dari sistem
+dengan $s$ adalah \emph{significand} atau \emph{mantissa}, $b$ adalah \emph{basis} dari sistem
 bilangan yang digunakan, dan $e$ adalah eksponen.
-  
+
+Pada komputer basis yang digunakan adalah basis-2 (biner). Tanda (\textit{sign}),
+mantissa dan eksponen akan direpresentasikan dengan menggunakan basis-2 dengan
+lebar bit atau jumlah digit tertentu. Semakin besar lebar bit yang digunakan semakin teliti
+representasi dari bilangan.
+
+\end{frame}
+
+
+\begin{frame}{Bilangan titik mengambang}
+
 Sebelum dinyatakan dalam bentuk ini, suatu bilangan dinormalisasi terlebih dahulu dengan cara
 memindahkan titik, desimal, biner dan sebagainya sedemikian rupa sehingga hanya satu digit
 yang berada di kiri tanda titik. Hal ini dilakukan untuk menghemat memori karena tidak ada
 bilangan nol yang tidak signifikan yang perlu disimpan.
 
-Misalnya bilangan 0.005678 dapat direpresentasikan tanpa normalisasi sebagai
+Contoh: bilangan 0.005678 dapat direpresentasikan tanpa normalisasi sebagai
 $0.005678 \times 10^{0}$. Namun dengan normalisasi, nilai tersebut akan disimpan
 sebagai $5.678 \times 10^{-3}$, artinya dua nol sebelum digit 5 tidak perlu disimpan.
 
@@ -345,6 +394,87 @@ Ketika kita melakukan normalisasi untuk bilangan dengan basis 2, digit yang bera
 titik biner akan selalu bernilai 1.
 
 \end{frame}
+
+
+\begin{frame}{Implikasi dari representasi \textit{floating point}}
+\fontsize{9}{10}\selectfont
+
+Misalkan kita memiliki "komputer" basis-10 dengan unit penyimpan angka
+yang terdiri dari 5 digit. Asumsikan bahwa satu digit
+akan digunakan sebagai tanda, dua untuk eksponen, dan dua untuk mantissa.
+Asumsikan juga satu digit dari eksponen digunakan untuk menyimpan tanda, dan satu digit lagi
+untuk besar dari eksponen.
+$$
+s_1 d_1 d_2 \times 10^{s_0 d_0}
+$$
+$s_0$: tanda untuk eksponen dan $s_1$: tanda untuk mantissa.
+$d_0$: magnitudo dari eksponen dan $d_1, d_2$: magnitudo dari mantissa.
+
+Angka terbesar yang dapat direpresentasikan adalah
+$+9.9 \times 10^{+9}$ sedangkan angka terkecilnya adalah $-1.0 \times 10^{-9}$
+
+{\centering
+\includegraphics[height=0.25\textheight]{../chapra_python/Chapra_Fig_4_4.png}
+\par}
+
+Mirip dengan representasi bilangan integer, \emph{overflow error} dan
+\emph{underflow error} juga dapat terjadi.
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\fontsize{9}{9}\selectfont
+
+Pada komputer ini, bilangan seperti $2^{-5} = 0.03125$ terpaksa harus disimpan sebagai
+$3.1\times 10^{-2}$. Pada saat inilah \emph{galat pembulatan} terjadi.
+Untuk kasus ini kita dapat menghitung galat ini sebesar:
+$$
+\frac{0.03125 - 0.031}{0.03125}\times 100\% = 0.8\%
+$$
+Kita dapat mengurangi galat ini dengan cara menambah digit mantissa.
+
+Bilangan lain, misalnya bilangan irasional seperti $\pi$ harus disimpan sebagai
+$3.1\times 10^{0}$ dan galatnya adalah:
+$$
+\frac{3.14159\ldots - 3.1}{3.14159\ldots} \times 100\% \approx 1.32\%
+$$
+Penambahan digit mantissa dapat mengurangi galat ini, namun galat ini tidak akan pernah
+bernilai nol karena bilangan irasional memiliki jumlah digit yang tak hingga.
+
+\end{frame}
+
+
+\begin{frame}
+
+Pada gambar berikut, bilangan yang dapat dinyatakan secara eksak ditampilkan sebagai garis
+vertikal pendek. Bilangan-bilangan lainnya akan mengalami galat pemotongan.
+
+{\centering
+\includegraphics[height=0.2\textheight]{../chapra_python/Chapra_Fig_4_5.png}
+\par}
+
+\end{frame}
+
+
+\begin{frame}{IEEE 754}
+
+Tipe bilangan titik mengambang yang sering digunakan adalah \textit{double-precision
+floating point} yang dijelaskan dalam standard IEEE 754. Pada standard ini digunakan
+64 bit.
+
+{\centering
+\includegraphics[height=0.25\textheight]{../chapra_python/Chapra_Fig_4_6.png}
+\par}
+
+Tipe lainnya yang juga dapat digunakan adalah \textit{single-precision} (32 bit),
+\textit{half-precision} (16 bit), dan \textit{quadruple-precision} (128 bit).
+
+\end{frame}
+
 
 
 % URL: https://0.30000000000000004.com/
