@@ -457,6 +457,29 @@ vertikal pendek. Bilangan-bilangan lainnya akan mengalami galat pemotongan.
 \includegraphics[height=0.2\textheight]{../chapra_python/Chapra_Fig_4_5.png}
 \par}
 
+Perhatikan bahwa celah atau jarak antar bilangan akan meningkat ketika kita berpindah dari
+satu orde magnitudo ke orde magnitudo yang lain. Misalnya untuk bilangan dengan
+eksponen -1, yaitu antara 0.1 dan 1, jarak antar bilangan adalah 0.01. Ketika kita melewati
+satu orde magnitudo, yaitu dari 1 sampai 10, celah ini meningkat ke 0.1. Hal ini berarti bahwa
+galat pembulatan dari suatu bilangan akan sebanding dengan magnitudonya. Selain itu, hal ini
+juga berarti bahwa galat relatif akan memiliki batas atas. Pada contoh sebelumnya (komputer
+hipotetik dengan basis 10), galat relatif maksimum adalah 0.05. Nilai ini sering
+juga disebut sebagai epsilon mesin (\textit{machine epsilon})
+atau presisi mesin (\textit{machine precision}).
+\end{frame}
+
+
+\frame{\textit{Machine epsilon}}
+
+$$
+\frac{|\Delta x|}{|x|} \leq \epsilon
+$$
+
+$$
+\epsilon = b^{1-t}
+$$
+b: base, t: jumlah digit signifikan pada mantissa
+
 \end{frame}
 
 
@@ -475,6 +498,27 @@ Tipe lainnya yang juga dapat digunakan adalah \textit{single-precision} (32 bit)
 
 \end{frame}
 
+
+
+\begin{frame}{Python}
+
+np.finfo(np.float64)
+
+\end{frame}
+
+
+\begin{frame}{Galat pemotongan (\textit{truncation error})}
+
+Galat pemotongan adalah galat yang dihasilkan karena penggunaan
+suatu aproksimasi dibandingkan dengan prosedur eksak.
+
+Contohnya adalah penggunaan persamaan beda hingga untuk mengaproksimasi
+turunan pertama:
+$$
+\frac{\partial v}{\partial t} \approx \frac{\Delta v}{\Delta t}
+$$
+
+\end{frame}
 
 
 % URL: https://0.30000000000000004.com/
