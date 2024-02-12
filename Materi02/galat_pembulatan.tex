@@ -346,12 +346,64 @@ Tipe lainnya yang juga dapat digunakan adalah \textit{single-precision} (32 bit)
 
 
 
-\begin{frame}{Python}
+\begin{frame}[fragile]{Python}
 
-np.finfo(np.float64)
+Pada Python, kita dapat mengetahui informasi mengenai tipe \textit{floating point}
+dengan menggunakan fungsi \pyinline{np.finfo()}, misalnya:
+\begin{pythoncode}
+np.finfo(np.float32)
+\end{pythoncode}
+akan memberikan keluaran:
+\begin{textcode}
+finfo(resolution=1e-06, min=-3.4028235e+38, max=3.4028235e+38, dtype=float32)
+\end{textcode}
+Keluaran ini hanya menampilkan sebagian informasi saja. Kita dapat menggunakan
+fungsi \pyinline{dir} atau \textit{tab-completion} pada konsol Python
+untuk mengetahui \textit{field} apa saja yang ada pada \pyinline{finfo}.
+Salah satu yang paling sering kita akses adalah \pyinline{finfo.eps}
+yang akan memberikan kita informasi mengenai epsilon mesin.
+
+\end{frame}
+
+
+\begin{frame}{Catatan mengenai kesalahan pembulatan}
+
+Kesalahan pemotongan adalah kesalahan yang cukup sulit untuk dideteksi.
+Salah satu cara untuk mengecek apakah terjadi kesalahan pemotongan adalah
+dengan menggunakan tipe data dengan presisi lebih tinggi.
+
+Untuk keperluan perhitungan teknis dan simulasi saintifik dan teknis,
+tipe data \txtinline{Float64} adalah standard yang paling sering digunakan.
+Untuk kuliah ini kita akan lebih banyak menggunakan \txtinline{Float64}.
+Dalam banyak kasus, kita biasanya dapat mengabaikan atau menganggap hasil
+yang kita tidak terlalu terpengaruh kesalahan pembulatan jika
+\txtinline{Float64} digunakan.
+
+Untuk keperluan \textit{soft-computing}, seperti \textit{deep learning},
+tipe data \txtinline{Float32} adalah yang paling populer (tipe data
+\txtinline{Float16} sekarang juga sudah mulai sering digunakan).
+
+\end{frame}
+
+
+\begin{frame}{Kasus rawan terjadi kesalahan pembulatan}
+
+Perhitungan dalam jumlah atau melibatkan angka yang besar, seperti
+penjumlahan angka-angka yang sangat besar, atau perhitungan kumulatif
+dalam jumlah atau waktu simulasi yang lama.
+
+Operasi antara bilangan yang besar dan bilangan yang kecil.
+
+Operasi pengurangan antara dua bilangan yang bernilai hampir sama
+(\textit{subtractive cancellation})
+
+\textit{Smearing}: hal ini terjadi pada deret (penjumlahan) di mana
+suku-suku individual lebih besar daripada hasil penjumlahan itu sendiri,
+ini sering terjadi pada saat deret dengan suku-suku positif dan negatif
+yang berosilasi.
 
 Contoh perhitungan: penjumlahan, rumus kuadrat, perhitungan $e^{10}$
-dan $e^{-10}$, perbandingan dengan 0.
+dan $e^{-10}$, perbandingan suatu bilangan dengan 0.
 
 \end{frame}
 
