@@ -399,7 +399,7 @@ titik biner akan selalu bernilai 1.
 \begin{frame}{Implikasi dari representasi \textit{floating point}}
 \fontsize{9}{10}\selectfont
 
-Misalkan kita memiliki "komputer" basis-10 dengan unit penyimpan angka
+Anggap kita memiliki "komputer" hipotetik basis-10 dengan unit penyimpan angka
 yang terdiri dari 5 digit. Asumsikan bahwa satu digit
 akan digunakan sebagai tanda, dua untuk eksponen, dan dua untuk mantissa.
 Asumsikan juga satu digit dari eksponen digunakan untuk menyimpan tanda, dan satu digit lagi
@@ -451,11 +451,18 @@ bernilai nol karena bilangan irasional memiliki jumlah digit yang tak hingga.
 \begin{frame}
 
 Pada gambar berikut, bilangan yang dapat dinyatakan secara eksak ditampilkan sebagai garis
-vertikal pendek. Bilangan-bilangan lainnya akan mengalami galat pemotongan.
+vertikal pendek. Bilangan-bilangan lainnya akan mengalami galat pembulatan.
 
 {\centering
 \includegraphics[height=0.2\textheight]{../chapra_python/Chapra_Fig_4_5.png}
 \par}
+
+Chopping vs rounding
+
+\end{frame}
+
+
+\frame{\textit{Machine epsilon}}
 
 Perhatikan bahwa celah atau jarak antar bilangan akan meningkat ketika kita berpindah dari
 satu orde magnitudo ke orde magnitudo yang lain. Misalnya untuk bilangan dengan
@@ -466,19 +473,12 @@ juga berarti bahwa galat relatif akan memiliki batas atas. Pada contoh sebelumny
 hipotetik dengan basis 10), galat relatif maksimum adalah 0.05. Nilai ini sering
 juga disebut sebagai epsilon mesin (\textit{machine epsilon})
 atau presisi mesin (\textit{machine precision}).
-\end{frame}
 
-
-\frame{\textit{Machine epsilon}}
-
-$$
-\frac{|\Delta x|}{|x|} \leq \epsilon
-$$
-
+Epsilon mesin dapat dihitung dari:
 $$
 \epsilon = b^{1-t}
 $$
-b: base, t: jumlah digit signifikan pada mantissa
+dengan $b$ adalah basis, dan $t$ jumlah digit signifikan pada mantissa.
 
 \end{frame}
 
@@ -503,6 +503,9 @@ Tipe lainnya yang juga dapat digunakan adalah \textit{single-precision} (32 bit)
 \begin{frame}{Python}
 
 np.finfo(np.float64)
+
+Contoh perhitungan: penjumlahan, rumus kuadrat, perhitungan $e^{10}$
+dan $e^{-10}$, perbandingan dengan 0.
 
 \end{frame}
 
