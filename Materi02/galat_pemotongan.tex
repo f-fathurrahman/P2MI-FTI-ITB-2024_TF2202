@@ -13,7 +13,69 @@ $$
 
 
 
+\begin{frame}{Deret Taylor}
 
-\begin{frame}{Contoh}
+\begin{equation}
+f(x_{i+1}) = f(x_i) + f'(x_{i}) + \frac{f''(x_i)}{2!}h^2 + \cdots +
+\frac{f^{(n)}(x_i)}{n!}h^n + R_{n}
+\end{equation}
 
+\begin{equation}
+R_{n} = \frac{f^{(n+1)}(\xi)}{(n+1)!}h^{n+1}
+\end{equation}
+
+\end{frame}
+
+
+\begin{frame}{Contoh 4.1 (Chapra)}
+
+Gunakan ekspansi deret Taylor untuk mengaproksimasi fungsi:
+$$
+f(x) = -0.1 x^{4} - 0.15 x^{3} - 0.5 x^{2} - 0.25 x + 1.2
+$$
+di sekitar $x_{i} = 0$ dengan $h=1$ (artinya kita diminta untuk menentukan
+aproksimasi dari fungsi pada saat $x_{i+1}=1$). Hitung juga galat pemotongan
+yang terjadi.
+
+\end{frame}
+
+
+\begin{frame}
+Secara umum, deret Taylor dengan $n$-suku akan eksak untuk polinomial
+orde-$n$. Untuk fungsi lain yang diferensiabel dan kontinu, seperti eksponensial
+dan sinusoid, diperlukan jumlah suku deret yang tak-hingga agar eksak.
+
+Dalam banyak kasus, penggunaan jumlah suku yang berhingga akan menghasilkan
+aproksimasi yang cukup dekat dengan nilai sebenearnya. Seberapa banyak suku
+yang diperlukan agar dapat menghasilkan aproksimasi yang cukup baik bergantung
+dari suku sisa $R_{n}$ dari ekspansi.
+
+Ada beberapa hal yang perlu diingat mengenai suku sisa dari deret Taylor.
+Perhatikan bahwa $\xi$ tidak diketahui, selain dari syarat bahwa $\xi$ terletak
+di antara $x_{i}$ dan $x_{i+1}$. Kedua, untuk menentukan turunan ke-$n+1$ dari
+$f(x)$, tentu saja kita harus mengetahui $f(x)$. Akan tetapi, jika $f(x)$ diketahui
+kita tidak perlu menggunakan deret Taylor, kita cukup menggunakan $f(x)$.
+
+Meskipun tidak dapat digunakan secara praktis, Persamaan suku sisa masih
+berguna untuk memberikan gambaran mengenai galat pemotongan yang terjadi.
+Hal ini karena kita dapat mengatur suku yang terkait dengan $h$ pada ekspansi
+deret Taylor: kita dapat memiliki sejauh mana dari $x$ kita ingin mengevaluasi $f(x)$
+dan jumlah suku yang ingin kita perhitungkan.
+\end{frame}
+
+
+
+\begin{frame}
+Persamaan suku sisa biasanya dinyatakan dengan:
+$$
+R_{n} = \mathcal{O}(h^{n+1})
+$$
+yang berarti bahwa galat pemotongan yang terjadi memiliki orde $h^{n+1}$. Hal ini
+berguna untuk \textit{perbandingan} dalam estimasi galat pemotongan.
+
+Misalnya jika sisa atau galat pada deret Taylor adalah $\mathcal{O}(h)$, maka
+jika ukuran langkah $h \rightarrow h/2$ maka galat $\epsilon \rightarrow \epsilon/2$. 
+
+Pada kasus lain, jika galat deret Taylor adalah $\mathcal{O}(h^2)$ maka
+jika ukuran langkah $h \rightarrow h/2$ maka galat $\epsilon \rightarrow \epsilon/4$. 
 \end{frame}
