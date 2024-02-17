@@ -61,11 +61,11 @@ khusus yang sedang ditekuni.
 
 \begin{frame}{Mengapa mempelajari metode numerik}
 
-Ada banyak permasalahan yang belum dapan diselesaikan dengan menggunakan
+Ada banyak permasalahan yang belum dapat diselesaikan dengan menggunakan
 program komputer yang sudah ada. Pada kondisi ini, kita perlu membuat program
 kita sendiri (\textit{customized program}).
 Pengalaman dalam mengimplementasikan suatu metode numerik
-atau algoritma akan sangat membantu.
+atau algoritma akan sangat membantu dalam kasus ini.
 
 Implementasi metode numerik merupakan salah satu cara yang efektif untuk
 belajar menggunakan komputer atau pemrograman.
@@ -88,7 +88,7 @@ belajar menggunakan komputer atau pemrograman.
 
 \begin{itemize}
 \item Python adalah bahasa pemrograman utama yang akan kita gunakan
-\item Dapat menggunakan Jupyter Notebook, Google Colab juga dapat digunakan
+\item Dapat menggunakan Jupyter Notebook; Google Colab juga dapat digunakan
 \item \textit{But I cannot do (or hate) programming}:
 Anda dapat menggunakan \textit{Google search} dan \textit{ChatGPT}
 \end{itemize}
@@ -242,8 +242,8 @@ dengan menggunakan:
 \frac{\mathrm{d}v}{\mathrm{d}t} \approx \frac{v_{i+1} - v_{i}}{t_{i+1} - t_{i}}
 \end{equation*}
 
-Perhatikan bahwa kita telah \emph{mendiskritisasi} kecepatan \(v(t)\)
-dan waktu \(t\) pada persamaan di atas, artinya \(v\) dan \(t\) tidak
+Perhatikan bahwa kita telah \emph{mendiskritisasi} kecepatan $v(t)$
+dan waktu $t$ pada persamaan di atas, artinya $v$ dan $t$ tidak
 lagi memiliki nilai yang kontinu, namun diskrit, seperti pada nilai
 dalam tabel. Solusi numerik yang akan kita dapatkan hanya tersedia pada
 titik-titik diskrit tersebut.
@@ -263,7 +263,7 @@ diaproksimasi menjadi:
 \begin{equation*}
 \frac{v_{i+1} - v_{i}}{t_{i+1} - t_{i}} = g - \frac{c}{m} v_{i}
 \end{equation*}
-
+atau:
 \begin{equation*}
 v_{i+1} = v_{i} + \underbrace{\left( g - \frac{c}{m} v_{i} \right)}_{
   \left.\dfrac{\mathrm{d}v}{\mathrm{d}t}\right|_{t_{i},v_{i}}
@@ -366,12 +366,12 @@ awal dan masalah nilai batas)
 
 \begin{frame}{Penggunaan pustaka atau menulis solusi sendiri}
 
-Use prepackaged library or roll out your own solution?
+\textit{Use prepackaged library or roll out your own solution?}
 
 Pada kelas ini kita akan menggunakan kedua pendekatan tersebut.
 
 Untuk metode yang relatif sederhana biasanya Anda akan diminta
-untuk mengimplementasikan sendiri program
+untuk mengimplementasikan sendiri program (tanpa bantuan pustaka).
 
 Beberapa metode numerik cukup rumit sehingga tidak praktis atau
 tidak mudah untuk diprogram.
