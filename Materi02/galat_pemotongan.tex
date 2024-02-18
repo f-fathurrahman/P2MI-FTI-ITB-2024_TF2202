@@ -15,14 +15,21 @@ $$
 
 \begin{frame}{Deret Taylor}
 
+Deret Taylor dapat digunakan untuk menghitung nilai
+fungsi $f(x)$ di suatu titik $x_{i+1}$ dengan informasi atau input
+nilai fungsi dan turunan-turunannya pada suatu titik referensi $x_{i}$.
+
+Deret Taylor dapat dituliskan sebagai:
 \begin{equation}
 f(x_{i+1}) = f(x_i) + f'(x_{i}) + \frac{f''(x_i)}{2!}h^2 + \cdots +
 \frac{f^{(n)}(x_i)}{n!}h^n + R_{n}
 \end{equation}
-
+dengan $R_{n}$ adalah suku sisa:
 \begin{equation}
 R_{n} = \frac{f^{(n+1)}(\xi)}{(n+1)!}h^{n+1}
 \end{equation}
+di mana $\xi$ adalah suatu bilangan yang terletak pada pada selang
+$[x_i, x_{i+1}]$.
 
 \end{frame}
 
@@ -65,7 +72,7 @@ dan jumlah suku yang ingin kita perhitungkan.
 
 
 
-\begin{frame}
+\begin{frame}{Estimasi galat pemotongan}
 Persamaan suku sisa biasanya dinyatakan dengan:
 $$
 R_{n} = \mathcal{O}(h^{n+1})
@@ -77,5 +84,6 @@ Misalnya jika sisa atau galat pada deret Taylor adalah $\mathcal{O}(h)$, maka
 jika ukuran langkah $h \rightarrow h/2$ maka galat $\epsilon \rightarrow \epsilon/2$. 
 
 Pada kasus lain, jika galat deret Taylor adalah $\mathcal{O}(h^2)$ maka
-jika ukuran langkah $h \rightarrow h/2$ maka galat $\epsilon \rightarrow \epsilon/4$. 
+jika ukuran langkah $h \rightarrow h/2$ maka galat $\epsilon \rightarrow \epsilon/4$.
+
 \end{frame}
