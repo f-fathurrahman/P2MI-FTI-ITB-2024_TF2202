@@ -34,8 +34,11 @@ $[x_i, x_{i+1}]$.
 \end{frame}
 
 
-\begin{frame}{Contoh 4.1 (Chapra)}
+\begin{frame}
 
+\fontsize{9}{10}\selectfont
+
+\begin{block}{Chapra Contoh 4.1}
 Gunakan ekspansi deret Taylor untuk mengaproksimasi fungsi:
 $$
 f(x) = -0.1 x^{4} - 0.15 x^{3} - 0.5 x^{2} - 0.25 x + 1.2
@@ -43,17 +46,98 @@ $$
 di sekitar $x_{i} = 0$ dengan $h=1$ (artinya kita diminta untuk menentukan
 aproksimasi dari fungsi pada saat $x_{i+1}=1$). Hitung juga galat pemotongan
 yang terjadi.
+\end{block}
+
+Pada contoh ini fungsi $f(x)$ diketahui, sehingga kita dapat menggunakan
+ekspresi dari $f(x)$ secara langsung untuk mengetahui nilai dari $f(x=1)$
+tanpa menggunakan deret Taylor.
+Tujuan dari latihan ini adalah untuk ilustrasi galat pemotongan.
+
+Aproksimasi deret Taylor dengan $n=0$ adalah:
+$$
+f(x_{i+1}) \approx f(x_{i}) = 1.2
+$$
+Galat pemotongan adalah:
+$$
+E_{t} = 0.2 - 1.2 = -1.0
+$$
 
 \end{frame}
 
 
+
 \begin{frame}
+\fontsize{9}{10}\selectfont
+
+Untuk $n=1$, deret Taylor memberikan:
+$$
+f(x_{i+1}) \approx f(x_{i}) + f'(x_{i+1})h
+$$
+Turunan pertama $f(x_{i})$ harus dihitung terlebih dahulu:
+$$
+f'(0) = -0.4(0.0)^3 - 0.45(0.0)^2 - 1.0(0.0) - 0.25 = -0.25
+$$
+sehingga:
+$$
+f(x_{i+1}) \approx 1.2 - 0.25h = 1.2 - 0.25(1) = 0.95
+$$
+Galat $E_t = 0.2 - 0.95 = -0.75$
+
+... (Lanjutkan seterusnya sampai suku $h^4$).
+
+Perhatikan bahwa dengan $n=4$ kita memperoleh hasil eksak, yaitu kita mendapatkan
+deret Taylor yang sama dengan $f(x)$:
+$$
+f(x) = 1.2 - 0.25h - 0.5h^2 - 0.15h^3 - 0.1h^4
+$$
+Perhatikan juga bahwa suku sisa:
+$$
+R_{4} = \frac{f^{(5)}(\xi)}{5!} h^5 = 0
+$$
+karena turunan kelima dari polinomial orde-4 adalah 0.
+
+\end{frame}
+
+
+
+\begin{frame}
+
+{\centering
+\includegraphics[height=0.6\textheight]{../chapra_7th/Chapra_Fig_4_1.png}
+\par}
+    
+\end{frame}
+
+
+
+\begin{frame}
+\fontsize{9}{10}\selectfont
+
+\begin{block}{Chapra Contoh 4.2}
+Gunakan deret Taylor dengan $n=0$ sampai $n=6$ untuk mengaproksimasi
+fungsi $f(x) = \cos(x)$ pada $x_{i+1} = \pi/3$ dengan titik referensi
+$x_{i} = \pi/4$.
+\end{block}
+
+Untuk kasus ini $h=x_{i+1} - x_{i} = \pi/3 - \pi/4 = \pi/12$.
+Hasil dapat dilihat pada tabel berikut.
+
+{\centering
+\includegraphics[height=0.5\textheight]{../chapra_7th/Chapra_Table_Example_4_2.png}
+\par}
+
+\end{frame}
+
+
+\begin{frame}{Deret Taylor dan Aproksimasi}
+\fontsize{9}{10}\selectfont
+
 Secara umum, deret Taylor dengan $n$-suku akan eksak untuk polinomial
 orde-$n$. Untuk fungsi lain yang diferensiabel dan kontinu, seperti eksponensial
 dan sinusoid, diperlukan jumlah suku deret yang tak-hingga agar eksak.
 
 Dalam banyak kasus, penggunaan jumlah suku yang berhingga akan menghasilkan
-aproksimasi yang cukup dekat dengan nilai sebenearnya. Seberapa banyak suku
+aproksimasi yang cukup dekat dengan nilai sebenarnya. Seberapa banyak suku
 yang diperlukan agar dapat menghasilkan aproksimasi yang cukup baik bergantung
 dari suku sisa $R_{n}$ dari ekspansi.
 
