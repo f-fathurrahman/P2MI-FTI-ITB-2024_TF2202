@@ -222,7 +222,7 @@ f(x) = f(\tilde{x}) + f'(\tilde{x})(x - \tilde{x})
 $$
 Hubungan ini pada digunakan untuk estimasi galat relatif dari $f(x)$:
 $$
-\frac{f(x) - f(\tilde{x})}{f(x)} \approx \frac{f'(\tilde{x})(x - \tilde{x})}{f(tilde{x})}
+\frac{f(x) - f(\tilde{x})}{f(x)} = \frac{f'(\tilde{x})(x - \tilde{x})}{f(\tilde{x})}
 $$
 sedangkan galat relatif dari $x$ adalah:
 $$
@@ -241,9 +241,20 @@ $$
 Bilangan kondisi memberikan ukuran seberapa besar ketidakpastian atau galat dalam
 $x$ diperbesar oleh operasi atau fungsi $f(x)$.
 
-Nilai bilangan kondisi yang lebih dari satu berarti bahwa galat relatif
-perhitungan $f(x)$ akan sama dengan
-galat
+Nilai bilangan kondisi $C$:
+\begin{itemize}
+\item $C = 1$: galat relatif perhitungan $f(x)$ (output) akan sama
+dengan galat dari $x$ (input).
+\item $C > 1$: galat relatif perhitungan $f(x)$ (output) lebih besar
+dengan galat dari $x$ (input)
+\item $C < 1$: galat relatif perhitungan $f(x)$ (output) lebih kecil
+dengan galat dari $x$ (input)
+\end{itemize}
+Operasi dengan bilangan kondisi yang sangat besar dikatakan
+bersifat berkondisi-buruk (\textit{ill-conditioned}).
+Penggunaan operasi \textit{ill-conditioned} sebaiknya dihindari
+dalam perhitungan numerik.
+
 
 \end{frame}
 
