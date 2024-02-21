@@ -112,7 +112,7 @@ benar sedikitnya dalam $n$ angka penting (\textit{significant figures}).
 
 
 
-\begin{frame}[fragile]{Contoh: deret Maclaurin}
+\begin{frame}[fragile]{Contoh: Deret Maclaurin dari fungsi eksponensial}
 \fontsize{9}{10}\selectfont
 
 Tinjau deret Maclaurin berikut:
@@ -171,5 +171,80 @@ menjadi lebih kecil daripada 0.05 \%.
 
 \input{galat_pemotongan}
 
+
+\begin{frame}{Galat pembulatan dan galat pemotongan}
+
+\begin{itemize}
+\item Galat pembulatan tidak dapat dihindari dalam perhitungan numerik (selama
+kita menggunakan komputer dan bilangan \textit{floating point}). Untuk saat ini
+penggunaan \texttt{Float64} dianggap sudah dapat memberikan hasil yang memuaskan
+dalam banyak kasus.
+\item Dalam metode numerik kita biasanya lebih memberikan perhatian pada galat
+pemotongan. Analisi dengan menggunakan deret Taylor dapat memberikan
+estimasi dari galat pemotongan.
+\item Galat total yang terjadi pada perhitungan numerik adalah kombinasi
+dari galat pemotongan dan galat pembulatan.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Propagasi (Perambatan) Galat}
+
+Perhitungan numerik biasanya melibatkan banyak operasi, misalnya operasi aritmatika.
+
+Karena galat pembulatan dan pemotongan operasi-operasi ini akan membawa galat.
+Galat ini akan terbawa sampai pada operasi-operasi selanjutnya sehingga dikatakan
+bahwa galat ini merambat.
+
+Galat yang merambat ini dapat terakumulasi pada hasil akhir.
+Perhitungan numerik yang kita lakukan harus berupaya untuk membuat
+galat yang terakumulasi ini tetap terkontrol atau tidak semakin membesar
+atau masih dalam batas yang diizinkan.
+
+Suatu prosedur numerik di mana galat yang terakumulasi ini semakin
+membesar dikatakan sebaga prosedur yang \textbf{tidak stabil} secara numerik
+(\textit{numerically unstable}). Kestabilan dari suatu prosedur
+matematik dapat dikuantifikasi dari \textbf{bilangan kondisi} dari prosedur tersebut.
+
+\end{frame}
+
+
+
+\begin{frame}{Stabilitas dan bilangan kondisi}
+\fontsize{9}{10}\selectfont
+
+Bilangan kondisi dari suatu prosedur atau permasalahan matematik memberikan
+gambaran mengenai sensitivitasnya terhadap perubahan input.
+Sebagai contoh bilangan kondisi, tinjau deret Taylor orde-1:
+$$
+f(x) = f(\tilde{x}) + f'(\tilde{x})(x - \tilde{x})
+$$
+Hubungan ini pada digunakan untuk estimasi galat relatif dari $f(x)$:
+$$
+\frac{f(x) - f(\tilde{x})}{f(x)} \approx \frac{f'(\tilde{x})(x - \tilde{x})}{f(tilde{x})}
+$$
+sedangkan galat relatif dari $x$ adalah:
+$$
+\frac{x - \tilde{x}}{\tilde{x}}
+$$
+Pada kasus ini, bilangan kondisi dapat didefinisikan sebagai rasio dari galat-galat
+relatif tersebut:
+$$
+\text{bilangan kondisi} = \frac{\tilde{x}f'(\tilde{x})}{f(\tilde{x})}
+$$
+\end{frame}
+
+
+\begin{frame}{Stabilitas dan bilangan kondisi}
+
+Bilangan kondisi memberikan ukuran seberapa besar ketidakpastian atau galat dalam
+$x$ diperbesar oleh operasi atau fungsi $f(x)$.
+
+Nilai bilangan kondisi yang lebih dari satu berarti bahwa galat relatif
+perhitungan $f(x)$ akan sama dengan
+galat
+
+\end{frame}
 
 \end{document}

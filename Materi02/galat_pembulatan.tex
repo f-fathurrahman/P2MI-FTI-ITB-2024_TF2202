@@ -66,7 +66,9 @@ Misalnya bilangan -173 pada komputer dengan 16-bit
 
 \begin{frame}{Contoh representasi bilangan bulat}
 
+\begin{block}{Bilangan bulat pada komputer 16-bit}
 Tentukan bilangan bulat dalam basis-10 yang dapat direpresentasikan dalam 16-bit.
+\end{block}
 
 Dari 16 bit yang tersedia, bit pertama digunakan menyimpan tanda.
 15 bit yang tersisa dapat digunakan untuk menyimpan bilangan biner
@@ -297,13 +299,21 @@ bernilai nol karena bilangan irasional memiliki jumlah digit yang tak hingga.
 \begin{frame}
 
 Pada gambar berikut, bilangan yang dapat dinyatakan secara eksak ditampilkan sebagai garis
-vertikal pendek. Bilangan-bilangan lainnya akan mengalami galat pembulatan.
+vertikal pendek.
 
 {\centering
 \includegraphics[height=0.2\textheight]{../chapra_python/Chapra_Fig_4_5.png}
 \par}
 
-Chopping vs rounding
+Bilangan-bilangan lainnya akan mengalami galat pembulatan.
+Ada dua kemungkinan yang dapat dipilih:
+\begin{itemize}
+\item \textit{chopping}: hanya beberapa digit saja yang disimpan, digit lainnya
+diabaikan (tidak disimpan dalam memori)
+\item \textit{rounding}: bilangan dibulatkan ke bilangan \textit{floating point}
+terdekat
+\end{itemize}
+Dalam kedua kasus galat pembulatan akan terjadi.
 
 \end{frame}
 
@@ -330,14 +340,21 @@ dengan $b$ adalah basis, dan $t$ jumlah digit signifikan pada mantissa.
 
 
 \begin{frame}{IEEE 754}
+\fontsize{9}{10}\selectfont
 
 Tipe bilangan titik mengambang yang sering digunakan adalah \textit{double-precision
 floating point} yang dijelaskan dalam standard IEEE 754. Pada standard ini digunakan
-64 bit.
+64 bit. Pada bahasa pemrograman, tipe ini diimplementasikan dengan beberapa nama.
+Pada bahasa pemrograman C/C++ tipe ini adalah tipe \texttt{double}.
+Pada Fortran tipe ini adalah \texttt{REAL(8)} atau \texttt{double precision}.
+Kita akan menyebut tipe ini sebagai \texttt{Float64},
 
 {\centering
 \includegraphics[height=0.25\textheight]{../chapra_python/Chapra_Fig_4_6.png}
 \par}
+
+Dengan menggunakan \texttt{Float64} kita memiliki sekitar 16 digit
+bilangan penting (untuk \textit{mantissa}).
 
 Tipe lainnya yang juga dapat digunakan adalah \textit{single-precision} (32 bit),
 \textit{half-precision} (16 bit), dan \textit{quadruple-precision} (128 bit).
