@@ -11,22 +11,228 @@ Akar Persamaan Nonlinear}
 
 \begin{frame}{Pendahuluan}
 
-Metode bagi-dua (bisection)
+Pada bagian ini kita akan mempelajari metode-metode numerik yang
+dapat digunakan untuk mencari solusi $\mathbf{x}$ atau akar-akar
+dari persamaan nonlinear:
+$$
+\mathbf{F}(\mathbf{x}) = \mathbf{0}
+$$
+di mana $\mathbf{F}$ adalah suatu fungsi non-linear dari $\mathbf{x}$.
+Secara umum $\mathbf{x}$ adalah vektor, atau tiap elemen dari
+$\mathbf{F}$ dapat dianggap sebagai
+fungsi multivariabel. Ruas kanan juga dapat bernilai vektor, atau
+$f$ merupakan fungsi bernilai vektor. Meskipun demikian,
+untuk materi pada bagian ini kita akan fokus pada satu persamaan
+dan satu variabel:
+\begin{equation}
+f(x) = 0
+\
+\end{equation}
+di mana $f$ adalah suatu fungsi nonlinear.
+\end{frame}
 
-Metode secant
 
-Metode regula-falsi
+\begin{frame}{Contoh kasus}
+\fontsize{9}{10}\selectfont
 
-Metode titik-tetap (fixed point)
+Permasalahan pencarian akar persamaan nonlinear dapat muncul dari berbagai
+macam konteks. Misalnya, tinjau kembali persamaan untuk kecepatan
+jatuh suatu benda dengan gesekan udara (misalnya \textit{bungee jumper})
+yang telah kita bahas sebelumnya:
+\begin{equation*}
+v(t) = \frac{gm}{c}\left( 1 - e^{-(c/m)t} \right)
+\end{equation*}
+Diberikan nilai-nilai dari $g$, $m$, $c$, dan $t$, kita dapat menghitung
+$v$. Sekarang jika nilai $v$ yang diberikan dan kita diminta untuk mencari
+nilai $c$, misalnya, apa yang perlu kita lakukan? Kita dapat
+mencoba untuk memanipulasi secara aljabar persamaan di atas sedemikian rupa sehingga
+$c$ terisolasi pada ruas kiri dan variabel-variabel yang diketahui nilainya
+pada ruas kanan. Dalam kasus ini, ternyata kita tidak dapat melakukan
+manipulasi tersebut.
 
-Metode Newton
+Sebagai alternatif, kita dapat mendefinisikan suatu persamaan lain sebagai fungsi
+dari $c$ sebagai berikut.
+$$
+f(c) = \frac{gm}{c}\left( 1 - e^{-(c/m)t} \right) - v
+$$
+Nilai $c$ yang memenuhi persamaan ini adalah nilai yang kita cari, dan dapat
+diperoleh sebagai akar atau solusi dari $f(c) = 0$.
 
-Metode 
+\end{frame}
+
+\begin{frame}{Metode grafis}
+\fontsize{9}{10}\selectfont
+
+\begin{columns}
+
+\begin{column}{0.6\textwidth}
+  Salah satu metode yang dapat kita gunakan untuk mencari akar dari $f(c)=0$
+  adalah dengan cara \textbf{membuat plot} dari $f(c)$.
+  
+  Akar dari $f(c)$ adalah
+  \textbf{titik perpotongan} antara $f(c)$ dengan sumbu-$x$.
+
+  Sebagai contoh, dengan parameter $t=10$, $g=9.81$, $v=40$, dan $m=68.1$
+  diperoleh plot $f(c)$ seperti pada gambar.
+
+  Dari gambar kita dapat melihat bahwa perpotongan antara $f(c)$ dan sumbu-$x$
+  terletak disekitar 12 dan 16. Dengan memperbesar atau \textit{zooming} lebih
+  dekat kita bisa mendapatkan estimasi akar yang lebih baik.
+
+  Metode grafis ini tidak praktis digunakan karena tidak presisi.
+  Meskipun demikian, metode ini dapat digunakan untuk mengestimasi letak
+  dari akar (yang akan berguna pada metode-metode yang akan kita bahas nanti).
+\end{column}
+
+\begin{column}{0.4\textwidth}
+  {\centering
+  \includegraphics[height=0.8\textheight]{../chapra_7th/Chapra_Fig_5_1.png}
+  \par}
+\end{column}
+
+\end{columns}
+
 
 
 \end{frame}
 
 
+
+\begin{frame}{Pembagian metode}
+Secara garis besar, ada dua jenis metode yang akan dibahas:
+\begin{itemize}\tightlist
+\item Metode-metode pengurungan (\textit{bracketing}). Metode ini memerlukan
+  dua titik awal sebagai tebakan posisi akar. Beberapa metode pengurungan:
+  \begin{itemize}
+  \item Metode bagi-dua (bisection)
+  \item Metode regula-falsi
+  \end{itemize}
+\item Metode-metode terbuka. Metode ini hanya memerlukan satu titik awal sebagai
+  tebakan posisi akar. Beberapa metode terbuka:
+  \begin{itemize}
+  \item Metode titik-tetap (fixed point)
+  \item Metode Newton
+  \item Metode secant
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Metode bagi-dua (\textit{bisection})}
+
+Metode bagi-dua bekerja dengan input tebakan awal $x_l$ dan $x_u$,
+(dengan $x_l$ < $x_u$) yang
+mengapit akar, artinya akar berada diantara $x_l$ dan $x_u$.
+Jika $f(x)$ bernilai real dan kontinu dan
+$$
+f(x_l) f(x_u) < 0
+$$
+atau jika $f(x_l)$ dan $f(x_u)$ berbeda tanda maka ada
+akar diantara $x_l$ dan $x_u$.
+Untuk metode bagi-dua, tebakan akar diberikan oleh titik tengah
+dari $x_l$ dan $x_u$:
+$$
+x_{r} = \frac{x_l + x_u}{2}
+$$
+Pada iterasi selanjutnya, salah satu dari $x_l$ dan $x_u$ akan
+digantikan dengan $x_r$, bergantung dari tanda dari $f(x_r)$.
+
+\end{frame}
+
+
+\begin{frame}{Metode bagi-dua (\textit{bisection})}
+Langkah-langkah metode bagi-dua:
+\begin{itemize}\tightlist
+\item STEP 1: Pilih $x_l$ dan $x_u$ yang memenuhi $f(x_l) f(x_u) < 0$
+\item STEP 2: Hitung estimasi akar:
+  \begin{equation*}
+  x_r = \frac{x_l + x_u}{2}
+  \end{equation*} 
+\item STEP 3: Perbarui selang $[x_l, x_u]$:
+  \begin{itemize}
+  \item Jika $f(x_l) f(x_r) < 0$, ganti atau perbarui nilai $x_u \leftarrow x_r$
+    kemudian kembali ke STEP 2.
+  \item Jika $f(x_l) f(x_r) > 0$, ganti atau perbarui nilai $x_l \leftarrow x_r$
+    kemudian kembali ke STEP 2.
+  \item Jika $f(x_l) f(x_r) = 0$ atau nilai absolut dari $f(x_r)$ sudah lebih kecil
+    dari nilai toleransi tertentu maka hentikan perhitungan.
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Metode bagi-dua (\textit{bisection})}
+
+{\centering
+\includegraphics[height=0.8\textheight]{../chapra_python/Chapra_Fig_5_5.png}
+\par}
+
+\end{frame}
+
+
+\begin{frame}{Contoh metode bagi-dua}
+
+Contoh proses iterasi untuk $f(c)$ dengan tebakan selang $[12,16]$:
+
+{\centering
+\includegraphics[height=0.5\textheight]{../chapra_7th/Chapra_Table_Example_5_4.png}
+\par}
+
+\end{frame}
+
+
+\begin{frame}{Metode \textit{regula-falsi}}
+\fontsize{9}{10}\selectfont
+
+\begin{columns}
+  
+  \begin{column}{0.5\textwidth}
+  Ide dari metode regula-falsi mirip dengan metode bagi-dua. Perbedaannya
+  adalah estimasi akar diperoleh dari perpotongan garis lurus yang menghubungkan
+  antara $f(x_l)$ dan $f(x_u)$ dengan sumbu-$x$.
+
+  Dari gambar:
+  $$
+  \frac{f(x_l)}{x_r - x_l} = \frac{f(x_u)}{x_r - x_u}
+  $$
+  sehingga diperoleh:
+  $$
+  x_r = \frac{x_u f(x_l) - x_l f(x_u)}{f(x_l) - f(x_u)}
+  $$
+  atau (alternatif):
+  $$
+  x_r = x_u - \frac{f(x_u)(x_l - x_u)}{f(x_l) - f(x_u)}
+  $$
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  {\centering
+  \includegraphics[height=0.7\textheight]{../chapra_7th/Chapra_Fig_5_12.png}
+  \par}
+  \end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Metode \textit{regula-falsi}}
+\fontsize{9}{10}\selectfont
+
+Implementasi metode \textit{regula-falsi} mirip dengan metode bagi-dua.
+Perbedaannya hanya pada persamaan yang digunakan untuk $x_r$.
+Berikut ini adalah perbandingan antara kedua metode tersebut.
+
+{\centering
+\includegraphics[height=0.5\textheight]{../chapra_7th/Chapra_Fig_5_13.png}
+\par}
+
+Biasanya metode \textit{regular falsi} membutuhkan iterasi yang lebih sedikit
+untuk konvergen ke akar dibandingkan dengan metode bagi-dua, meskipun pada kasus
+tertentu metode bagi-dua dapat lebih cepat konvergen.
+
+\end{frame}
 
 
 
