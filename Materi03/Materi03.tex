@@ -218,19 +218,29 @@ Contoh proses iterasi untuk $f(c)$ dengan tebakan selang $[12,16]$:
 
 
 \begin{frame}{Metode \textit{regula-falsi}}
-\fontsize{9}{10}\selectfont
+\fontsize{10}{11}\selectfont
 
-Implementasi metode \textit{regula-falsi} mirip dengan metode bagi-dua.
-Perbedaannya hanya pada persamaan yang digunakan untuk $x_r$.
-Berikut ini adalah perbandingan antara kedua metode tersebut.
+\begin{columns}
 
-{\centering
-\includegraphics[height=0.5\textheight]{../chapra_7th/Chapra_Fig_5_13.png}
-\par}
+  \begin{column}{0.5\textwidth}
+  Implementasi metode \textit{regula-falsi} mirip dengan metode bagi-dua.
+  Perbedaannya hanya pada persamaan yang digunakan untuk $x_r$.
 
-Biasanya metode \textit{regular falsi} membutuhkan iterasi yang lebih sedikit
-untuk konvergen ke akar dibandingkan dengan metode bagi-dua, meskipun pada kasus
-tertentu metode bagi-dua dapat lebih cepat konvergen.
+  Biasanya metode \textit{regula-falsi} membutuhkan iterasi yang lebih sedikit
+  untuk konvergen ke akar dibandingkan dengan metode bagi-dua, meskipun pada kasus
+  tertentu metode bagi-dua dapat lebih cepat konvergen. Pada kasus ini, kita bisa
+  mengatasinya dengan cara menggunakan metode bagi-dua jika konvergensi metode
+  \textit{regula-falsi} stagnan setelah beberapa iterasi (Lihat Contoh 5.6 pada Chapra
+  dan metode \textit{regula-falsi} yang dimodifikasi).
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  {\centering
+  \includegraphics[height=0.8\textheight]{../chapra_7th/Chapra_Fig_5_13.png}
+  \par}
+  \end{column}
+
+\end{columns}
 
 \end{frame}
 
