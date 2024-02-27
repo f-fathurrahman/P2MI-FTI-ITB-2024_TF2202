@@ -12,7 +12,7 @@ yang berhingga (kecuali jika disimpan dalam bentuk tipe data khusus yang dapat m
 
 Galat pembulatan berhubungan langsung dengan bagaimana cara suatu bilangan
 disimpan pada komputer. Untuk membahas ini, kita perlu mengingat kembali
-mengani \emph{sistem bilangan}
+mengenai \emph{sistem bilangan}.
 
 \end{frame}
 
@@ -83,32 +83,6 @@ Bilangan 0 sudah didefinisikan sebagai 0000000000000000, maka
 1000000000000000 tidak perlu digunakan untuk menyatakan minus 0. Oleh karena itu
 biasanya representasi biner tersebut digunakan untuk mereprentasikan bilangan
 negatif tambahan, yaitu -32768.
-
-\end{frame}
-
-
-
-\begin{frame}[fragile]{Metode komplemen-2}
-
-Pada komputer modern, metode magnitudo bertanda yang dijelaskan sebelumnya
-tidak secara langsung digunakan. Metode alternatif (namun masih terkait)
-yaitu metode komplemen-2 (\textit{2's complement}) digunakan. Pada metode ini
-kita tidak memerlukan bit khusus untuk menyimpan tanda.
-
-Misalnya kita ingin menyatakan bilangan -28 pada komputer 8-bit.
-Pertama angka 28 dinyatakan dalam bilangan biner, yaitu:
-\begin{textcode}
-00011100
-\end{textcode}
-Untuk menyatakan angka -28, pertama kita inversi bilangan biner tersebut
-(0 menjadi 1, 1 menjadi 0):
-\begin{textcode}
-11100011
-\end{textcode}
-kemudian tambahkan 1:
-\begin{textcode}
-11100100
-\end{textcode}
 
 \end{frame}
 

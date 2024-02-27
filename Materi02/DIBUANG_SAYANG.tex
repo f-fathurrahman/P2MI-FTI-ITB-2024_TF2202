@@ -1,0 +1,23 @@
+\begin{frame}[fragile]{Metode komplemen-2}
+
+Pada komputer modern, metode magnitudo bertanda yang dijelaskan sebelumnya
+tidak secara langsung digunakan. Metode alternatif (namun masih terkait)
+yaitu metode komplemen-2 (\textit{2's complement}) digunakan. Pada metode ini
+kita tidak memerlukan bit khusus untuk menyimpan tanda.
+
+Misalnya kita ingin menyatakan bilangan -28 pada komputer 8-bit.
+Pertama angka 28 dinyatakan dalam bilangan biner, yaitu:
+\begin{textcode}
+00011100
+\end{textcode}
+Untuk menyatakan angka -28, pertama kita inversi bilangan biner tersebut
+(0 menjadi 1, 1 menjadi 0):
+\begin{textcode}
+11100011
+\end{textcode}
+kemudian tambahkan 1:
+\begin{textcode}
+11100100
+\end{textcode}
+
+\end{frame}
