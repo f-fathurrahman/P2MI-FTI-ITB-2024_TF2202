@@ -1,0 +1,29 @@
+\begin{frame}{Metode iterasi titik-tetap (\textit{fixed-point} iteration)}
+\fontsize{10}{11}\selectfont
+
+Metode iterasi titik-tetap adalah salah satu dari metode terbuka untuk menghitung
+akar dari persamaan nonlinear.
+Langkah pertama dari metode ini adalah menuliskan kembali persamaan
+$f(x) = 0$ menjadi:
+\begin{equation}
+x = g(x)  
+\label{eq:x_gx}
+\end{equation}
+Jika $x$ merupakan akar dari $f(x)$ maka Persamaan \eqref{eq:x_gx}
+juga akan terpenuhi. Artinya jika kita dapat menemukan $x$ sedemikan rupa sehingga
+$x = g(x)$, maka kita telah menemukan akar dari $f(x)$.
+Dalam bentuk iterasi, metode ini dapat dituliskan sebagai:
+$$
+x_{i+1} = g(x_{i})
+$$
+di mana $i$ adalah indeks iterasi. Terdapat beberapa kondisi yang dapat
+digunakan untuk menentukan konvergensi. Salah satunya adalah dengan
+menggunakan estimasi galat
+$$
+\epsilon_{a} = \left| \frac{x_{i+1} - x_{i}}{x_{i+1}} \right|
+$$
+Iterasi dihentikan jika $\epsilon_{a}$ lebih kecil dari suatu nilai
+tertentu.
+\end{frame}
+
+
