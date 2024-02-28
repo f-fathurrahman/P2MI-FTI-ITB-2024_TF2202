@@ -1,0 +1,64 @@
+\begin{frame}
+\fontsize{9}{10}\selectfont
+
+Skema iterasi:
+$$
+x_{i+1} = g(x_{i})
+$$
+Misalkan solusi dari iterasi titik-tetap ini adalah $x_r$, sehingga berlaku:
+$$
+x_{r} = g(x_r)
+$$
+Dengan mengurangi kedua persamaan tersebut diperoleh:
+\begin{equation}
+x_r - x_{i+1} = g(x_r) - g(x_i)
+\label{eq:B6_1_1}
+\end{equation}
+
+Menggunakan teorema nilai rata-rata turunan: jika suatu fungsi $g(x)$
+dan turunan pertamanya kontinu pada suatu interval $a \leq x \leq b$,
+maka terdapat setidaknya satu nilai $x = \xi$ dalam interval tersebut
+sedemikian rupa sehingga:
+\begin{equation}
+g'(\xi) = \frac{g(b) - g(a)}{b - a}
+\label{eq:B6_1_2}  
+\end{equation}
+Ruas kanan dari persamaan ini adalah kemiringan dari garis yang menghubungkan antara
+$g(a)$ dan $g(b)$. Dengan kata lain, teorema rata-rata turunan menyatakan bahwa
+setidaknya ada satu titik di antara $a$ dan $b$ yang memiliki kemiringan,
+$g'(\xi)$, yang sejajar dengan garis yang menghubugkan antara $g(a)$ dan
+$g(b)$.
+\end{frame}
+
+
+\begin{frame}
+\fontsize{9}{10}\selectfont
+
+Jika $a = x_{i}$ dan $b = x_r$, maka ruas kanan dari
+Persamaan \eqref{eq:B6_1_1} dapat dituliskan sebagai:
+\begin{equation*}
+g(x_r) - g(x_i) = (x_r - x_i) g'(\xi)
+\end{equation*}
+sehingga Persamaan \eqref{eq:B6_1_1} dapat dituliskan juga menjadi:
+\begin{equation}
+x_r - x_{i+1} = (x_r - x_i) g'(\xi)
+\end{equation}
+Dengan definisi galat sebenarnya untuk iterasi ke-$i$ sebagai:
+$$
+E_{t,i} = x_r - x_i
+$$
+maka:
+$$
+E_{t,i+1} = g'(\xi) E_{t,i}
+$$
+Dari persamaan ini dapat dilihat bahwa galat akan semakin berkurang pada
+setiap iterasi jika $|g'(x)| < 1$. Sebaliknya, jika $|g'(x)| > 1$
+galat akan semakin membesar.
+
+Selain itu, jika turunan bernilai positif, maka galat akan positif solusi iteratif
+akan monotonik. Jika turunan bernilai negatif, maka galat akan berosilasi.
+
+Analisis ini juga menunjukkan bahwa galat pada metode iterasi titik-tetap akan
+sebanding dengan galat dari langkah sebelumnya. Oleh karena ini iterasi titik-tetap
+dikatakan memiliki sifat konvergensi linear (\textit{linearly convergent}).
+\end{frame}

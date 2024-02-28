@@ -27,3 +27,193 @@ tertentu.
 \end{frame}
 
 
+\begin{frame}
+\fontsize{9}{10}\selectfont
+
+\begin{block}{Contoh metode iterasi titik-tetap}
+Gunakan metode iterasi titik-tetap untuk mencari akar dari
+$f(x) = e^{-x} - x$
+\end{block}
+Fungsi $f(x)$ diubah dulu mejadi $x = g(x)$ di mana $g(x) = e^{-x}$.
+Iterasi titik-tetap memberikan skema iterasi:
+$$
+x_{i+1} = e^{-x_{i}}
+$$
+Dengan nilai awal $x_0 = 0$ diperoleh iterasi seperti pada tabel berikut.
+
+{\centering
+\includegraphics[height=0.5\textheight]{../chapra_7th/Chapra_Table_Example_6_1.png}
+\par}
+
+\end{frame}
+
+
+\begin{frame}{Interpretasi grafis}
+\fontsize{10}{11}\selectfont
+
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+  {\centering
+  \includegraphics[height=0.8\textheight]{../chapra_7th/Chapra_Fig_6_3.png}
+  \par}
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  Secara grafis, metode iterasi titik-tetap bertujuan untuk
+  menemukan perpotongan antara kurva $y_1 = x$ dengan
+  kurva $y_2 = g(x)$.
+
+  Metode iterasi titik-tetap tidak selalu konvergen.
+
+  Dari gambar, terlihat bahwa iterasi titik-tetap akan konvergen jika
+  $|g'(x) < 1|$: magnitudo dari kemiringan $g(x)$ lebih kecil daripada
+  kemiringan garis $y_1 = x$ pada daerah di mana metode ini diaplikasikan.
+  \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\input{analisis_titik_tetap}
+
+
+\begin{frame}{Metode Newton-Raphson}
+\fontsize{9}{10}\selectfont
+
+\begin{columns}
+
+  \begin{column}{0.5\textwidth}
+  Metode Newton-Raphson mungkin adalah metode yang paling terkenal
+  di antara metode pencarian akar linear.
+
+  Pada metode ini jika kita mulai dari tebakan akar $x_i$, kita dapat menarik garis
+  singgung (\textit{tangent line})
+  dari titik $(x_i, f(x_i))$. Titik perpotongan antara garis singgung ini
+  dengan sumbu-$x$ merupakan tebakan selanjutnya untuk akar.
+  
+  Dari gambar dapat dicari garis singgung pada $x_i$:
+  $$
+  f'(x_{i}) = \frac{f(x_i) - 0}{x_i - x_{i+1}}
+  $$
+  diperoleh:
+  \begin{equation}
+  \myhighlight{
+  x_{i+1} = x_{i} - \frac{f(x_{i})}{f'(x_{i})}
+  }\label{eq:Chapra_6_6}
+  \end{equation}
+  Metode ini dapat digunakan jika $f'(x_{i}) \neq 0$.
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  {\centering
+  \includegraphics[height=0.8\textheight]{../chapra_7th/Chapra_Fig_6_5.png}
+  \par}
+  \end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\fontsize{10}{11}\selectfont
+
+\begin{block}{Contoh}
+Gunakan metode Newton-Raphson untuk mengestimasi akar dari $f(x) = e^{-x} - x$ dengan
+menggunakan tebakan akar awal $x_{0} = 0$.
+\end{block}
+
+Kita perlu mencari $f'(x)$ terlebih dahulu:
+$$
+f'(x) = -e^{-x} - 1
+$$
+Dengan menggunakan skema iterasi pada Persamaan \eqref{eq:Chapra_6_6} diperoleh
+hasil pada tabel berikut.
+
+{\centering
+\includegraphics[height=0.4\textheight]{../chapra_7th/Chapra_Table_Example_6_3.png}
+\par}
+
+\end{frame}
+
+
+\begin{frame}
+\fontsize{9}{10}\selectfont
+
+\begin{columns}
+  \begin{column}{0.5\textwidth}
+  \begin{block}{Contoh}
+  Tentukan akar positif dari $f(x) = x^{10} - 1$ dengan menggunakan metode Newton-Raphson
+  dan tebakan awal $x_0 = 0.5$.
+  \end{block}
+  Biasanya metode Newton-Raphson konvergen ke akar dengan cepat (konvergensi kuadratik).
+  Namun pada kasus tertentu, seperti pada contoh ini,
+  metode Newton-Raphson dapat kesulitan untuk konvergen.
+  
+  Skema iterasi Newton-Raphson pada kasus ini dapat dituliskan sebagai berikut:
+  $$
+  x_{i+1} = x_{i} - \frac{x_{i}^{10} - 1}{10x_{i}^{9}}
+  $$
+  Diperoleh hasil pada tabel berikut.
+  \end{column}
+
+  \begin{column}{0.5\textwidth}
+  
+  {\centering
+  \includegraphics[height=0.5\textheight]{../chapra_7th/Chapra_Table_Example_6_5.png}
+  \par}
+
+  Seperti terlihat pada tabel, metode Newton-Raphson konvergen sangat lambat ke
+  akar.
+
+  Penyebab dari konvergensi yang lambat ini dapat didiagnosa
+  dengan cara membuat plot dari fungsi yang bersangkutan.
+  Biasanya dapat terjadi osilasi atau nilai tebakan akar yang
+  jelek dikombinasikan dengan turunan fungsi yang sangat kecil
+  (garis singgung yang hampir sejajar dengan sumbu-$x$)
+  dapat membuat metode Newton-Raphson kesulitan untuk konvergen.
+
+  \end{column}
+
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Metode garis-potong (\textit{secant})}
+
+Metode garis-potong mirip dengan metode Newton-Raphson. Perbedaannya
+adalah pada metode garis-potong, turunan fungsi diaproksimasi dengan menggunakan
+beda-hingga mundur:
+$$
+f'(x_{i}) \approx \frac{f(x_{i-1}) - f(x_i)}{x_{i-1} - x_{i}}
+$$
+sehingga diperoleh skema iterasi:
+$$
+x_{i+1} = x_{i} - \frac{f(x_{i}) (x_{i-1} - x_{i})}{f(x_{i-1}) - f(x_{i})}
+$$
+Metode garis potong memerlukan dua titik untuk memulai iterasi. Berbeda dengan
+metode tertutup, dua titik ini tidak perlu mengapit akar.
+
+\end{frame}
+
+
+
+\begin{frame}{Metode garis-potong modifikasi}
+
+Pada metode ini tidak digunakan dua tebakan awal, namun hanya satu titik saja.
+Untuk mengaproksimasi turunan, digunakan gangguan kecil:
+$$
+f'(x_i) \approx \frac{f(x_i + \delta \, x_{i}) - f(x_i)}{\delta \, x_{i}}
+$$
+atau:
+$$
+x_{i+1} = x_{i} - \frac{\delta \, x_{i} f(x_i)}{f(x_{i} + \delta \, x_i) - f(x_i)}
+$$
+dengan $\delta$ adalah suatu bilangan fraksional yang kecil, misalnya $10^{-5}$.
+
+Alternatif lain adalah dengan mengganti keseluruhan $\delta x_{i}$
+dengan suatu konstanta yang kecil.
+
+\end{frame}
